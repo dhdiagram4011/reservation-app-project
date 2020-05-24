@@ -1,0 +1,33 @@
+<head>
+<style>
+body {
+    background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/myinfopic.jpeg")
+}
+</style>
+</head>
+<body>
+<form action="/reservation/eticket_resend/" method="post">
+{% block content %}
+{% csrf_token %}
+<div id="wrapper" style="width:100%; text-align:center; font-size:13px; margin-top:150px;">
+결제 및 예약정보 확인
+</div>
+<div id="wrapper" style="width:100%; text-align:center; font-size:13px; margin-top:70px;">
+<strong>기종 |</strong> {{ courses.FlightNumber }}<br/>     
+<strong>편명 |</strong> {{ courses.FlightAircraft }}<br/>     
+<strong>출발지 |</strong> {{ courses.starting_point }}<br/>     
+<strong>도착지 |</strong> {{ courses.arrival }}<br/>     
+<strong>비행시간 |</strong> {{ courses.flight_time | date:'H 시간 i 분' }}<br/>     
+<strong>가는날 |</strong> {{ courses.daytogo | date:'Y년 m월 d일' }}<br/>    
+<strong>오는날 |</strong> {{ courses.comingDay | date:'Y년 m월 d일' }}<br/>
+<strong>좌석등급 |</strong> {{ courses.SeatClass  }}<br/>
+<strong>가격 |</strong> {{ courses.Price }}<br/>
+</div>
+<div id="wrapper" style="width:100%; text-align:center;">
+<ul style="text-decoration:none; list-style:none; margin-left:-30px">
+<li><input type="submit", name="payment", value="결제하기"></li>
+<li><button name="course_choice" , value="{{ course.id }}">티켓재발송</li>
+</ul>
+</div>
+{% endblock %}
+</body>

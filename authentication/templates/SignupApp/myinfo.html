@@ -1,0 +1,24 @@
+<style>
+body {    
+background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/myinfopic.jpeg")
+}
+</style>
+<body>
+<div style="font-size:13px; text-align:center; margin-top:200px;">
+<strong>{{ myprofile_pks.koreanFirstname }} {{ myprofile_pks.koreanLastname }}</strong> 님의 회원정보는 아래와 같습니다.
+</div>
+<br/>
+<br/>
+{% block content %}
+<div style="font-size:13px; text-align:center;">
+<strong>아이디 |</strong> {{ myprofile_pks.username }}<br/>
+<strong>이메일 |</strong> {{ myprofile_pks.email }}<br/>
+<strong>주소 |</strong> {{ myprofile_pks.address }}<br/>
+<strong>상세주소 |</strong> {{ myprofile_pks.detailAddress }}<br/>
+<strong>가입일 |</strong>{{ myprofile_pks.created_date | date:'Y년 m월 d일 H시i분' }}<br/>
+<strong>한국(성) |</strong>{{ myprofile_pks.koreanFirstname }}<br/>
+<strong>한국(이름) |</strong>{{ myprofile_pks.koreanLastname }}<br/>
+<strong>영문(성) |</strong>{{ myprofile_pks.englishLastname }}<br/>
+<strong>영문(이름) |</strong>{{ myprofile_pks.englishFirstname }}<br/>
+{% endblock %}
+</body>

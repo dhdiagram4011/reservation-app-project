@@ -1,0 +1,56 @@
+{% block content %}
+<head>
+<style>
+body {    
+background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/myinfopic.jpeg")
+}
+</style>
+</head>
+<body>
+<form action="/reservation/course_search/" method="get">
+<div>
+</p>
+<br/>
+<br/>
+<br/>
+<div>
+{% csrf_token %}
+<style>
+ul{
+    list-style:none;
+}
+</style>
+<div id="wrapper" style="margin-bottom:30px; text-align:center;">
+
+<div id="wrapper" style="margin-bottom:30px; margin-left:180px;">
+<ul style="border:1px; color:gray;">
+<li style="float:left"><strong>{{form.daytogo}}</strong></li>
+<li style="float:left; margin-left:30px;"><strong>{{form.comingDay}}</strong></li>
+<li style="float:left; margin-left:30px;">출발지 | {{ form.starting_point }}</li>
+<li style="float:left; margin-left:30px;">도착지 | {{ form.arrival }}</li>
+<li style="float:left; margin-left:30px;">좌석등급 | {{ form.SeatClass }}</li>
+<li style="float:left; margin-top:60px; margin-left:-380px;"><input type="submit", value="항공권 조회하기"></li>
+<li style="float:left; margin-top:60px; margin-left:-440px;"><input type="button", value="회원가입" onClick="location.href='/auth/register/'"></li>
+<li style="float:left; margin-top:60px; margin-left:-490px;"><input type="button", value="로그인" onClick="location.href='/auth/login/'"></li>
+</ul>
+</div>
+{% endblock %}
+</form>
+<br/>
+<br/>
+<br/>
+<div>
+<div>
+<div id="address" style="position:absoltue; margin-top:300px">
+<p style=font-size:12px>주) 대한항공 | 대표이사 : 우기홍 외 1명 | 주소 : 서울특별시 강서구 하늘길 260<br/>
+대표전화 : 1588-2001 / 02-2656-2001<br/>
+사업자 등록번호 : 110-81-14794 | 통신판매업신고 : 강서 제 16-3010<br/>
+개인정보보호책임자 : 여객사업본부장 이진호 전무<br/>
+© 1997-2020 KOREAN AIR<br/></p>
+<br/>
+</div>
+</div>
+</div>
+</body>
+
+

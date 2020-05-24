@@ -1,0 +1,42 @@
+<head>
+<form action="{% url 'myinfo' %}" method="post">
+<style>
+ul {
+    list-style:none;
+},
+body {
+    background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/myinfopic.jpg")
+}
+</style>
+</head>
+<body>
+<p style="font-size:13px; text-align:center; margin-top:120px;">
+로그인에 성공하였습니다. 로그인 하신 아이디는 아래와 같습니다.<br/>
+
+</p>
+<br/>
+<br/>
+{% block content %}
+{% for user_pk in user_pks %}
+{% csrf_token %}
+<div style="width:100%; text-align:center; font-size:12px; margin-left:-30px;">
+<ul>
+<li><strong>가입순서 | {{ user_pk.id }}</strong></li>
+<li><strong>아이디 | {{ user_pk.username }}</strong></li>
+<li><strong>이메일 |</strong> {{ user_pk.email }}</li>
+<li><strong>주소 |</strong> {{ user_pk.address }}</li>
+<li><strong>가입일 |</strong> {{ user_pk.created_date | date:'Y년 m월 d일 H시i분' }}</li>
+<li><strong>상세주소 |</strong> {{ user_pk.detailAddress }}</li>
+</ul>
+
+<div style="margin-top:20px; margin-left:20px;">
+<input type="button" value="회원탈퇴" onclick="location.href='/auth/unregister/'">
+<input type="button" value="로그아웃" onclick="location.href='/auth/logout/'">
+<input type="button" value="예약하기" onclick="location.href='/reservation/revstart/'">
+<input type="button" value="예약내역" onclick="location.href='/reservation/myrevlist/'">
+<button name="myinfo" value="{{ user_pk.id }}">회원정보</button>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
+</body>
