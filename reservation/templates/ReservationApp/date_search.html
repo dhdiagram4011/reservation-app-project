@@ -1,0 +1,49 @@
+{% block content %}
+{% load static %}
+<head>
+<style>
+body {    
+background-image:url('{{ STATIC_URL }}/korean-air-img.png')
+/*background-image:url( "{ static 'korean-air-img.png' %}")*/
+}
+</style>
+</head>
+<body>
+<form action="/reservation/date_search_result/" method="get">
+<div>
+<br/>
+<br/>
+<br/>
+<div>
+{% csrf_token %}
+<style>
+ul{
+    list-style:none;
+}
+</style>
+<div id="daybox" style="position:absolute; margin-top:100px;">
+<p style="font-size:12px;"><strong>출발일 기준 전체 항공권 조회하기</strong> | 아래에서 출발하시고 싶으신 날짜를 선택해 주세요</p>
+<ul style="border:1px; color:gray;">
+<li style="float:left"><strong>출발일 | {{form.daytogo}}</strong></li>
+<li style="float:left; margin-left:30px;"><input type="submit", value="항공권 조회하기"></li>
+</ul>
+</div>
+{% endblock %}
+<br/>
+<br/>
+<br/>
+<div>
+<div>
+<div id="address" style="position:absoltue; margin-top:300px">
+<p style=font-size:12px>주) 대한항공 | 대표이사 : 우기홍 외 1명 | 주소 : 서울특별시 강서구 하늘길 260<br/>
+대표전화 : 1588-2001 / 02-2656-2001<br/>
+사업자 등록번호 : 110-81-14794 | 통신판매업신고 : 강서 제 16-3010<br/>
+개인정보보호책임자 : 여객사업본부장 이진호 전무<br/>
+© 1997-2020 KOREAN AIR<br/></p>
+<br/>
+</div>
+</div>
+</div>
+</body>
+
+

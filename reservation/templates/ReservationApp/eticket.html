@@ -1,0 +1,26 @@
+<form action="" method="post">{% csrf_token %}
+{% block content %}
+<br/>
+<strong>| 예약정보 확인 |</strong>
+<br/>
+<br/>
+<br/>
+승객성명 | 
+이메일 | 
+출발지 | {{ courses.starting_point }}<br/>     
+도착지 | {{ courses.arrival }}<br/>     
+비행시간 | {{ courses.flight_time | date:'H 시간 i 분' }}<br/>     
+가는날 | {{ courses.daytogo | date:'Y년 m월 d일' }}<br/>    
+오는날 | {{ courses.comingDay | date:'Y년 m월 d일' }}<br/>
+예약시간 | {{ courses.created_date | date:'Y년 m월 d일 H시 i분' }}
+<br/>
+<br/>
+<div id="address" style="position:absoltue; margin-top:300px">
+<p style=font-size:12px>주) 대한항공 | 대표이사 : 우기홍 외 1명 | 주소 : 서울특별시 강서구 하늘길 260<br/>
+대표전화 : 1588-2001 / 02-2656-2001<br/>
+사업자 등록번호 : 110-81-14794 | 통신판매업신고 : 강서 제 16-3010<br/>
+개인정보보호책임자 : 여객사업본부장 이진호 전무<br/>
+© 1997-2020 KOREAN AIR<br/></p>
+<br/>
+</div>
+{% endblock %}
