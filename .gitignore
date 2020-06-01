@@ -179,6 +179,7 @@ dmypy.json
 
 **/.venv
 **/.DS_Store 
-settings.py
+/Users/dohyoungkim/Downloads/revapp/new_rev_app/reservation_project/settings.py
+/reservation-app-project/reservation_project/settings.py
 
 # End of https://www.gitignore.io/api/django,python,visualstudiocode
