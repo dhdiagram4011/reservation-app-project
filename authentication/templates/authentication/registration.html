@@ -1,5 +1,6 @@
 {% block content %}
-<form method="POST">{% csrf_token %}
+<!--<form method="POST">-->
+<form method="POST" action="{% url 'authentication:registrationSuccess' %}">{% csrf_token %}
 <head>
 <style>
 body {    
@@ -35,6 +36,7 @@ li {
 </div>
 <div style="width:100%; text-align:center; margin-left:20px;">
 <input type="submit" value="가입하기">
+</form>
 <input type="button" value="예약페이지" onClick="location.href='/reservation/revstart/'">
 </div>
 {% endblock %}

@@ -18,7 +18,7 @@ ul {
 </p>
 <div style="width:100%; font-size:13px; text-align:center; margin-top:70px;">
 <ul>
-{% block content %}
+{% block content %}{% csrf_token %}
 {% for userlist in userlists %}
 <li>{{ userlist.username }}</li>
 <li>{{ userlist.email }}</li>

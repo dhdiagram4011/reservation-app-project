@@ -11,18 +11,18 @@ from django.utils import timezone
 
 
 def index(request):
-    return render(request, 'ReservationApp/index.html')
+    return render(request, 'reservation/index.html')
 
 
 def intro(request):
-    return render(request, 'ReservationApp/intro.html')
+    return render(request, 'reservation/intro.html')
 
 
 # 예약 완료 후 티켓발송
 def eticket_send(request):
     courses = flightSection.objects.get(id=request.POST['course_choice'])
     title = "[KAL-E-TICKET]예약이 완료되었습니다(E-TICKET발송안내)"
-    html_messsage = render_to_string('ReservationApp/eticket.html', {'courses': courses})
+    html_messsage = render_to_string('reservation/eticket.html', {'courses': courses})
     email = EmailMessage(title, html_messsage, to=['dhdiagram@gmail.com'])
     email.content_subtype = "html"
     return email.send()
@@ -32,7 +32,7 @@ def eticket_send(request):
 def eticket_resend(request):
     courses = flightSection.objects.get(id=request.POST['course_choice'])
     title = "[KAL-E-TICKET]항공권 발송완료(E-TICKET발송)"
-    html_messsage = render_to_string('ReservationApp/eticket.html', {'courses': courses})
+    html_messsage = render_to_string('reservation/eticket.html', {'courses': courses})
     email = EmailMessage(title, html_messsage, to=[request.POST["email"]])
     email.content_subtype = "html"
     return email.send(courses)
@@ -43,10 +43,10 @@ def date_search(request):
     if request.method == 'POST':
         form = datesearchForm(request.POST)
         if form.is_valid():
-            return render(request, 'ReservationApp/course_list.html', {'courses': courses}) 
+            return render(request, 'reservation/course_list.html', {'courses': courses}) 
     else:
         form = datesearchForm()
-    return render(request, 'ReservationApp/date_search.html', {'form': form})
+    return render(request, 'reservation/date_search.html', {'form': form})
 
 
 #@login_required
@@ -63,14 +63,14 @@ def revstart(request):
         return redirect('payment')
     else:
         form = reservationForm()
-    return render(request, 'ReservationApp/rev_start.html', {'form': form})
+    return render(request, 'reservation/rev_start.html', {'form': form})
 
 
 
 def payment(request):
     courses = flightSection.objects.get(id=request.POST['course_choice'])
     eticket_send(request)
-    return render(request, 'ReservationApp/payment.html', { 'courses': courses })
+    return render(request, 'reservation/payment.html', { 'courses': courses })
 
 
         
@@ -79,9 +79,9 @@ def payment(request):
 def course_search(request):
     if flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass']).exists():
         courses = flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass'])
-        return render(request, 'ReservationApp/course_list.html', {'courses': courses})
+        return render(request, 'reservation/course_list.html', {'courses': courses})
     else:
-        return render(request, 'ReservationApp/sch_does_not_exist.html')
+        return render(request, 'reservation/sch_does_not_exist.html')
 
 
 # 날짜기반 항공권 조회기능
@@ -90,7 +90,7 @@ def date_search_result(request):
         courses = flightSection.objects.filter(daytogo=request.GET['daytogo'])
     except courses.DoesNotExist:
         raise Http404("해당 출발일에 항공 여정이 없습니다")
-    return render(request, 'ReservationApp/date_list.html', {
+    return render(request, 'reservation/date_list.html', {
         'courses': courses,
     })
 

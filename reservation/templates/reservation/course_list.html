@@ -1,4 +1,4 @@
-<form action="{% url 'payment' %}" method="POST">
+<form action="{% url 'reservation:payment' %}" method="POST">
 {% block content %}
 {% csrf_token %}
 {% for course in courses %}
