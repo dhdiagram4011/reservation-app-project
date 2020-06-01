@@ -130,8 +130,15 @@ LOGOUT_REDRIECT_URL = ''
 # EMAIL
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = '..'
-EMAIL_HOST_PASSWORD = '..'
+EMAIL_HOST_USER = 'rlaehgud21764011@gmail.com'
+EMAIL_HOST_PASSWORD = 'revaiaofsikdkvsf'
 EMAIL_USE_TLS = True
 
 AUTH_USER_MODEL = 'authentication.MyUser'
+
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'bg_img')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'bg_img'),
+)

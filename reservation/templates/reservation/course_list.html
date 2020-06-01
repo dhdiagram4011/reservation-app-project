@@ -1,12 +1,14 @@
 <form action="{% url 'reservation:payment' %}" method="POST">
 {% block content %}
+{% load static %}
 {% csrf_token %}
 {% for course in courses %}
 <br/>
 <style>
-body {    
+/*body {    
 background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/csbground.jpg")
 }
+*/
 ul{
     list-style:none;
 }

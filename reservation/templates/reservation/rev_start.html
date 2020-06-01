@@ -1,9 +1,12 @@
 {% block content %}
+{% load static %}
 <head>
 <style>
+/*
 body {    
 background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/myinfopic.jpeg")
 }
+*/
 </style>
 </head>
 <body>
@@ -29,9 +32,9 @@ ul{
 <li style="float:left; margin-left:30px;">출발지 | {{ form.starting_point }}</li>
 <li style="float:left; margin-left:30px;">도착지 | {{ form.arrival }}</li>
 <li style="float:left; margin-left:30px;">좌석등급 | {{ form.SeatClass }}</li>
-<li style="float:left; margin-top:60px; margin-left:-380px;"><input type="submit", value="항공권 조회하기"></li>
+<li style="float:left; margin-top:60px; margin-left:-370px;"><input type="submit", value="항공권 조회하기"></li>
 <li style="float:left; margin-top:60px; margin-left:-440px;"><input type="button", value="회원가입" onClick="location.href='/auth/register/'"></li>
-<li style="float:left; margin-top:60px; margin-left:-490px;"><input type="button", value="로그인" onClick="location.href='/auth/login/'"></li>
+<li style="float:left; margin-top:60px; margin-left:-500px;"><input type="button", value="로그인" onClick="location.href='/auth/login/'"></li>
 </ul>
 </div>
 {% endblock %}

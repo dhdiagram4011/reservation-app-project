@@ -179,6 +179,6 @@ dmypy.json
 
 **/.venv
 **/.DS_Store 
-
+settings.py
 
 # End of https://www.gitignore.io/api/django,python,visualstudiocode
