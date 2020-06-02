@@ -88,4 +88,7 @@ class emailTicket(models.Model):
     flight_time = models.DateTimeField()
     daytogo = models.DateField()
     comingDay = models.DateField()
-    created_date = models.DateTimeField(default=timezone.now())
+    SeatClass = models.ForeignKey('seatClass', on_delete=models.CASCADE)
+    FlightNumber = models.ForeignKey('flightNumber', on_delete=models.CASCADE)
+    FlightAircraft = models.ForeignKey('flightAircraft', on_delete=models.CASCADE)
+    Price = models.ForeignKey('price', on_delete=models.CASCADE)

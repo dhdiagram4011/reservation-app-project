@@ -25,7 +25,7 @@ class seatClassAdmin(admin.ModelAdmin):
 
 
 class emailTicketAdmin(admin.ModelAdmin):
-    list_display = ['id', 'starting_point', 'arrival', 'flight_time', 'daytogo','comingDay','created_date']
+    list_display = ['id', 'starting_point', 'arrival', 'flight_time', 'daytogo','comingDay','SeatClass','FlightNumber','FlightAircraft','Price']
 
 
 admin.site.register(flightAircraft, flightAircraftAdmin)

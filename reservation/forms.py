@@ -7,7 +7,7 @@ from django.utils import timezone
 class emailTicketForm(forms.ModelForm):
     class Meta:
         model = emailTicket
-        fields = ['starting_point', 'arrival', 'flight_time', 'daytogo', 'comingDay','created_date']
+        fields = ['starting_point', 'arrival', 'flight_time', 'daytogo', 'comingDay', 'SeatClass','FlightNumber','FlightAircraft','Price']
         #fields = '__all__'
 
     starting_point = forms.CharField(max_length=10)
@@ -15,7 +15,10 @@ class emailTicketForm(forms.ModelForm):
     flight_time = forms.CharField(max_length=20)
     daytogo = forms.CharField(max_length=10)
     comingDay = forms.CharField(max_length=10)
-    #created_date = forms.DateTimeField(default=timezone.now())    
+    SeatClass = forms.ChoiceField(label='좌석등급')
+    FlightNumber = forms.ChoiceField(label='항공기번호')
+    FlightAircraft = forms.ChoiceField(label='기종')
+    Price = forms.ChoiceField(label='가격')
 
 
 class datesearchForm(forms.ModelForm):

@@ -7,7 +7,7 @@ background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation
 </style>
 </head>
 <body>
-<form action="/auth/loginSuccess/" method="post">
+<form action="{% url 'reservation:revstart' %}" method="POST">
 
 {% csrf_token %}
 <div>
@@ -24,6 +24,7 @@ background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation
 <div>
 <div style="width:100%; text-align:center; margin-top:30px;">
 <input type="submit" , value="로그인">
+</form>
 <input type="button" , value="회원가입" onclick="location.href='/auth/register/'">
 </div>
 </div>

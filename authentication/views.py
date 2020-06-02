@@ -76,18 +76,18 @@ def login(request):
         user = authenticate(username=username, password=password)
 
         if user is not None:
-            return redirect('loginSuccess')
+            return render(request, 'reservation:revstart')
         else:
-            return HttpResponse('아이디 또는 패스워드를 확인해 주세요')
+            return HttpResponse('아이디(ID) 또는 패스워드(PASSWORD)를 확인해 주세요')
 
 
 
-def loginSuccess(request):
-    user_pks = MyUser.objects.filter(username=request.POST['username'], password=request.POST['password'])
-    if user_pks:
-        return render(request, 'authentication/login_success.html', {'user_pks': user_pks})
-    else:
-        return render(request, 'authentication/login_failed.html')
+# def loginSuccess(request):
+#     user_pks = MyUser.objects.filter(username=request.POST['username'], password=request.POST['password'])
+#     if user_pks:
+#         return render(request, 'authentication/login_success.html', {'user_pks': user_pks})
+#     else:
+#         return render(request, 'authentication/login_failed.html')
 
 
 def logout(request):

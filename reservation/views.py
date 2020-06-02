@@ -38,6 +38,38 @@ def eticket_resend(request):
     return email.send(courses)
 
 
+#예약 기록 저장 --> email_ticket
+def email_ticket(request):
+    if request.method == 'POST':
+        courses = flightSection.objects.get(id=request.POST['course_choice'])
+        form = emailTicketForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            starting_point = request.POST["starting_point"]
+            arrival = request.POST["arrival"]
+            flight_time = request.POST["flight_time"]
+            daytogo = request.POST["daytogo"]
+            comingDay = request.POST["comingDay"]
+            SeatClass = request.POST["SeatClass"]
+            FlightNumber = request.POST["FlightNumber"] 
+            FlightAircraft = request.POST["FlightAircraft"]
+            Price  = request.POST["Price"]
+            print(request.POST["starting_point"])
+            print(request.POST["arrival"])
+            print(request.POST["flight_time"])
+            printrequest.POST["daytogo"]
+            print(request.POST["comingDay"])
+            print(request.POST["SeatClass"])
+            print(request.POST["FlightNumber"])
+            print(request.POST["FlightAircraft"])
+            print(request.POST["Price"])
+            eticket_send(request)  
+        return render(request, 'reservation/payment.html', {'courses': courses})
+    else:
+        form = reservationForm()
+    return render(request, 'reservation/rev_start.html', {'form': form})
+
+
 # @login_required
 def date_search(request):
     if request.method == 'POST':
@@ -60,7 +92,8 @@ def revstart(request):
             flight_time = request.POST["flight_time"]
             daytogo = request.POST["daytogo"]
             comingDay = request.POST["comingDay"]
-        return redirect('payment')
+            SeatClass = request.POST["SeatClass"]
+        return redirect('course_search')
     else:
         form = reservationForm()
     return render(request, 'reservation/rev_start.html', {'form': form})
@@ -68,9 +101,12 @@ def revstart(request):
 
 
 def payment(request):
-    courses = flightSection.objects.get(id=request.POST['course_choice'])
-    eticket_send(request)
-    return render(request, 'reservation/payment.html', { 'courses': courses })
+    if request.method == 'POST':
+        form = emailTicketForm(request.POST)
+        if form.is_valid():
+            courses = flightSection.objects.get(id=request.POST['course_choice'])
+            eticket_send(request)
+        return render(request, 'reservation/payment.html', { 'courses': courses })
 
 
         

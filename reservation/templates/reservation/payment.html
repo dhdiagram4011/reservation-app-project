@@ -6,7 +6,7 @@ body {
 </style>
 </head>
 <body>
-<form action="/reservation/eticket_resend/" method="post">
+<form action="{% url 'reservation:eticket_resend' %}" method="POST">
 {% block content %}
 {% csrf_token %}
 <div id="wrapper" style="width:100%; text-align:center; font-size:13px; margin-top:150px;">
