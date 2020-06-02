@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 class registrationForm(forms.ModelForm):
     class Meta:
         model = MyUser
-        fields = ['username', 'koreanLastname', 'koreanFirstname', 'englishLastname', 'englishFirstname', 'email', 'password', 'address', 'detailAddress', 'phoneNumber','created_date']
+        fields = ['username', 'koreanLastname', 'koreanFirstname', 'englishLastname', 'englishFirstname', 'email', 'password', 'address', 'detailAddress', 'phoneNumber']
 
     username = forms.CharField(label="로그인아이디", widget=forms.TextInput(attrs={'placeholder': '아이디', 'style' : 'width:15em; height:3em; background-color:#F1F0EF; text-align:center; border:none; width:25em;'}))
     password = forms.CharField(label="패스워드", widget=forms.PasswordInput(attrs={'placeholder': '패스워드', 'style' : 'width:15em; height:3em; background-color:#F1F0EF; text-align:center; border:none; width:25em;'}))

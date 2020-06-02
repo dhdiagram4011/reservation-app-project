@@ -18,10 +18,9 @@ class MyUser(AbstractUser):
     password = models.CharField(max_length=200, help_text='패스워드를 입력해 주세요')
     detailAddress = models.CharField(max_length=200, help_text='상세 주소를 입력해 주세요')
     phoneNumber = models.CharField(max_length=15, help_text='핸드폰 번호를 입력해 주세요')
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True)
+    published_date = models.DateTimeField(null=True, blank=True)
 
-    
 
 # @receiver(pre_save, sender=MyUser)
 # def password_hashing(instance, **kwargs):

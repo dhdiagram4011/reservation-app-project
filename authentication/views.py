@@ -53,7 +53,7 @@ def registration(request):
             print(request.POST["detailAddress"])
             print(request.POST["phoneNumber"])
             usermail(request)
-        return redirect('registrationSuccess')
+        return redirect('authentication:registrationSuccess')
 
 
 def registrationSuccess(request):
