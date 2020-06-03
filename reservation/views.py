@@ -49,26 +49,11 @@ def email_ticket(request):
             arrival = request.POST["arrival"]
             flight_time = request.POST["flight_time"]
             daytogo = request.POST["daytogo"]
-            comingDay = request.POST["comingDay"]
-            SeatClass = request.POST["SeatClass"]
-            FlightNumber = request.POST["FlightNumber"] 
-            FlightAircraft = request.POST["FlightAircraft"]
-            Price  = request.POST["Price"]
-            print(request.POST["starting_point"])
-            print(request.POST["arrival"])
-            print(request.POST["flight_time"])
-            printrequest.POST["daytogo"]
-            print(request.POST["comingDay"])
-            print(request.POST["SeatClass"])
-            print(request.POST["FlightNumber"])
-            print(request.POST["FlightAircraft"])
-            print(request.POST["Price"])
-            eticket_send(request)  
+            comingDay = request.POST["comingDay"]  
         return render(request, 'reservation/payment.html', {'courses': courses})
     else:
         form = reservationForm()
-    return render(request, 'reservation/rev_start.html', {'form': form})
-
+        return redirect('reservation:revstart')
 
 # @login_required
 def date_search(request):
@@ -102,11 +87,17 @@ def revstart(request):
 
 def payment(request):
     if request.method == 'POST':
+        courses = flightSection.objects.get(id=request.POST['course_choice'])
         form = emailTicketForm(request.POST)
         if form.is_valid():
-            courses = flightSection.objects.get(id=request.POST['course_choice'])
+            post = form.save()
+            starting_point = request.POST["starting_point"]
+            arrival = request.POST["arrival"]
+            flight_time = request.POST["flight_time"]
+            daytogo = request.POST["daytogo"]
+            comingDay = request.POST["comingDay"]
             eticket_send(request)
-        return render(request, 'reservation/payment.html', { 'courses': courses })
+        return render(request, 'reservation/payment.html', {'courses': courses})
 
 
         
