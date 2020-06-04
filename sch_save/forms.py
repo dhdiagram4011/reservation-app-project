@@ -9,5 +9,5 @@ class profileForm(forms.ModelForm):
     name = forms.CharField(label='이름')
     email = forms.EmailField(label='이메일')
     phone = forms.CharField(label='핸드폰')
-    address_01 = forms.DateField(label='주소')
-    address_02 = forms.DateField(label='상세주소')
+    address_01 = forms.CharField(label='주소')
+    address_02 = forms.CharField(label='상세주소')
