@@ -6,6 +6,7 @@ class profile(models.Model):
     phone = models.CharField(max_length=20)
     address_01 = models.CharField(max_length=200)
     address_02 = models.CharField(max_length=200)
+    #password = models.CharField(max_length=10)
     #created_date = models.DateTimeField(auto_now_add=True)
     #published_date = models.DateTimeField(null=True, blank=True)
 

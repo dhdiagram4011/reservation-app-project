@@ -1,0 +1,40 @@
+{% block content %}
+<form method="POST" action="{% url 'data_save:profileRegister' %}">{% csrf_token %}
+<head>
+
+<style>
+li {
+    list-style:none;
+}
+</style>
+</head>
+</head>
+<div>
+<p style=font-size:13px;>
+<br/>
+<br/>
+<div style="width:100%; text-align:center; font-size:12px; margin-left:10px;">
+<strong style="text-decoration:underline;">회원가입 페이지 입니다. 아래의 정보를 모두 빠짐없이 정확하게 입력하여 주세요</strong>
+</div>
+</p>
+<div class="infobox" style="width:100%; text-align:center">
+<ul>
+<li>{{ form.username }}</li>
+<li style="margin-top:10px;">이름 | {{ form.name }}</li>  
+<li style="margin-top:10px;">이메일 | {{ form.email }}</li>
+<li style="margin-top:10px;">휴대폰 | {{ form.phone }}</li>
+<li style="margin-top:10px;">주소1 | {{ form.address_01 }}</li>
+<li style="margin-top:10px;">주소2 | {{ form.address_02 }}</li>
+</ul>
+</div>
+<div style="width:100%; text-align:center; margin-left:20px;">
+<input type="submit" value="가입하기">
+</form>
+</div>
+{% endblock %}
+<br/>
+<br/>
+<div>
+<br/>
+<br/>
+</div>
