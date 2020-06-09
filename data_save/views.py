@@ -6,21 +6,28 @@ from django.http import HttpResponse
 
 
 def profileEdit(request):
-    s_data = profile.objects.get(id=request.POST['member_choice'])
     if request.method == 'POST':
+        s_data = profile.objects.get(id=request.POST['member_choice'])
         form = profileForm(request.POST)
-        s_data.name = form.cleaned_data['name']
-        s_data.email = form.cleaned_data['email']
-        s_data.phone = form.cleaned_data['phone']
-        s_data.address_01 = form.cleaned_data['address_01']
-        s_data.address_02 = form.cleaned_data['address_02']
-        s_data.save()
-        return HttpResponse('정보수정이 완료되었습니다')
-        print(form.errors)
-        return HttpResponse('에러가 발생하였습니다')
+        if form.is_valid():
+            s_data.name = form.cleaned_data['name']
+            s_data.email = form.cleaned_data['email']
+            s_data.phone = form.cleaned_data['phone']
+            s_data.address_01 = form.cleaned_data['address_01']
+            s_data.address_02 = form.cleaned_data['address_02']
+            s_data.save()
+            return HttpResponse('정보수정이 완료되었습니다')
+            print(form.errors)
+            return HttpResponse('에러가 발생하였습니다')
     else:
-        form = profileForm()
-        return render(request, 'data_save/profile_edit.html', {'form':form}) 
+        form = profileForm(instance = profile)
+        # context = {
+        #     'form':form,
+        #     'writing':True,
+        #     'now':'edit',
+        # }
+        return render(request, 'data_save/profile_edit.html', {'form':form})
+        #return render(request, 'data_save/profile_edit.html', context)
 
 
 
@@ -49,7 +56,7 @@ def profileRegister(request):
 
 
 def memberlist(request):
-    members = profile.objects.order_by('-id')[:1 ]
+    members = profile.objects.order_by('-id')[:1]
     return render(request, 'data_save/member_all.html' , {'members': members})
 
 

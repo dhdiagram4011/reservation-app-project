@@ -10,3 +10,5 @@ urlpatterns = [
     path('edit/', profileEdit, name='profileEdit'),
     path('memberlist/', memberlist, name='memberlist'),
 ]
+
+
