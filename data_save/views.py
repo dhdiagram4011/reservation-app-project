@@ -6,8 +6,8 @@ from django.http import HttpResponse
 
 
 def profileEdit(request):
-    s_data = profile.objects.get(id=request.POST['member_choice'])
     if request.method == 'POST':
+        s_data = profile.objects.get(id=request.POST['member_choice'])
         form = profileForm(request.POST, instance=s_data)
         if form.is_valid():
             s_data.name = form.cleaned_data['name']
