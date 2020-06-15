@@ -1,7 +1,7 @@
 {% block content %}
-<form method="POST" action="{% url 'data_save:memberlist' %}">
+<form method="POST" action="{% url 'data_save:profileRegister' %}">
 {% csrf_token %}
-<input type="hidden" name="mem_register" value="{{ member.id }}" />
+<!--<input type="hidden" name="mem_register" value="{{ member.id }}" />-->
 <head>
 
 <style>

@@ -46,13 +46,10 @@ def profileRegister(request):
                 email = members.email,
                 phone = members.phone,
                 address_01 = members.address_01,
-                address_02 = members.address_02
+                address_02 = members.address_02,
             )
             new_register.save()
             return redirect('data_save:memberlist')
-                
-    
-    
 
 
 def memberlist(request):
