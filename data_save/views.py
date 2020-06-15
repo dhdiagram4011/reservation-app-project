@@ -31,32 +31,30 @@ def profileEdit(request):
 
 
 
+# 회원가입
 def profileRegister(request):
     if request.method == 'GET':
-        form = profileForm(request.GET)
-        return render(request, 'data_save/profile.html' , {'form':form})
+         form = profileForm(request.GET)
+         return render(request, 'data_save/profile.html' , {'form':form})
     elif request.method == 'POST':
         form = profileForm(request.POST)
         if form.is_valid():
             post = form.save()
-            name = request.POST["name"]
-            email = request.POST["email"]
-            phone = request.POST["phone"]
-            address_01 = request.POST["address_01"]
-            address_02 = request.POST["address_02"]
-            print(request.POST["name"])
-            print(request.POST["email"])
-            print(request.POST["phone"])
-            print(request.POST["address_01"])
-            print(request.POST["address_02"])
-            return redirect ('data_save:memberlist')
-        else:
-            print(form.errors)
-            return HttpResponse('에러가 발생하였습니다')
+            members = get_object_or_404(profile, id=int(request.GET.get('mem_register',0)))
+            new_register = profile(
+                name = members.name,
+                email = members.email,
+                phone = members.phone,
+                address_01 = members.address_01,
+                address_02 = members.address_02
+            )
+            new_register.save()
+            return redirect('data_save:memberlist')
+                
+    
+    
 
 
 def memberlist(request):
     members = profile.objects.order_by('-id')[:1]
     return render(request, 'data_save/member_all.html' , {'members': members})
-
-

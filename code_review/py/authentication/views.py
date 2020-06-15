@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .forms import registrationForm, loginForm
 from .models import MyUser
 from django.utils import timezone
@@ -31,27 +31,10 @@ def registration(request):
     elif request.method == 'POST':
         form = registrationForm(request.POST)
         if form.is_valid():
-            post = form.save()
-            username = request.POST["username"]
-            email = request.POST["email"]
-            password = request.POST["password"]
-            koreanLastname = request.POST["koreanLastname"]
-            koreanFirstname = request.POST["koreanFirstname"]
-            englishLastname = request.POST["englishLastname"]
-            englishFirstname = request.POST["englishFirstname"]
-            address = request.POST["address"]
-            detailAddress = request.POST["detailAddress"]
-            phoneNumber = request.POST["phoneNumber"]
-            print(request.POST["username"])
-            print(request.POST["email"])
-            print(request.POST["password"])
-            print(request.POST["koreanLastname"])
-            print(request.POST["koreanFirstname"])
-            print(request.POST["englishLastname"])
-            print(request.POST["englishFirstname"])
-            print(request.POST["address"])
-            print(request.POST["detailAddress"])
-            print(request.POST["phoneNumber"])
+            user = form.save(commit=False)
+            password = request.POST.get('password', '-')
+            user.set_password(password)
+            user.save()
             usermail(request)
         return redirect('authentication:registrationSuccess')
 
@@ -65,19 +48,19 @@ def already_exists(request):
     return render(request, 'authentication/already_exists.html')
 
 
-def login(request):
+def login_view(request):
     if request.method == 'GET':
         form = loginForm()
         return render(request, 'authentication/login.html', {'form': form})
     elif request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
 
         user = authenticate(username=username, password=password)
 
         if user is not None:
+            login(request, user)
             return redirect('reservation:revstart')
-            
         else:
             return HttpResponse('아이디(ID) 또는 패스워드(PASSWORD)를 확인해 주세요')
 

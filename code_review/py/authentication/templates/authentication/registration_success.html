@@ -1,0 +1,38 @@
+<head>
+<style>
+body {
+    background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/myinfopic.jpg")
+}
+li {
+    list-style:none;
+}
+ul {
+    list-style:none;
+}
+</style>
+</head>
+<div style="width:100%; font-size:12px; text-decoration:underline; text-align:center; margin-top:200px;">
+입력하신 가입정보는 다음과 같습니다. 정보가 올바른지 확인해 주시기 바랍니다.<br/>
+가입완료 후 로그인시 입력하신 아이디/패스워드를 정확히 입력해 주시기 바랍니다.<br/>
+</div>
+</p>
+<div style="width:100%; font-size:13px; text-align:center; margin-top:70px;">
+<ul>
+{% block content %}{% csrf_token %}
+{% for userlist in userlists %}
+<li>{{ userlist.username }}</li>
+<li>{{ userlist.email }}</li>
+<li>{{ userlist.koreanLastname }}</li>     
+<li>{{ userlist.koreanFirstname }}</li>
+<li>{{ userlist.address }}</li>
+<li>{{ userlist.detailAddress }}</li>
+<li>{{ userlist.created_date | date:'Y년 m월 d일 H시i분' }}</li>
+</ul>
+{% endfor %}
+<div style="font-size:12px; text-decoration:underline; margin-left:30px;"> 
+<strong>가입해 주셔서 대단히 감사합니다.</strong>
+</div>
+<div style="margin-top:20px; margin-left:40px;">
+<input type="button" value="로그인 바로가기" onclick="location.href='/auth/login/'"></a>
+</div>
+{% endblock %}

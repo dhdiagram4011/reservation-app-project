@@ -1,0 +1,49 @@
+{% block content %}
+<form method="POST" action="{% url 'authentication:registration' %}">{% csrf_token %}
+<head>
+<style>
+body {    
+background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/cloud.jpg")
+}
+li {
+    list-style:none;
+}
+</style>
+</head>
+</head>
+<div>
+<p style=font-size:13px;>
+<br/>
+<br/>
+<div style="width:100%; text-align:center; font-size:12px; margin-left:10px;">
+<strong style="text-decoration:underline;">회원가입 페이지 입니다. 아래의 정보를 모두 빠짐없이 정확하게 입력하여 주세요</strong>
+</div>
+</p>
+<div class="infobox" style="width:100%; text-align:center">
+<ul>
+<li>{{ form.username }}</li>
+<li style="margin-top:10px;">{{ form.koreanLastname }}</li>  
+<li style="margin-top:10px;">{{ form.koreanFirstname }}</li>
+<li style="margin-top:10px;">{{ form.englishLastname }}</li>
+<li style="margin-top:10px;">{{ form.englishFirstname }}</li>
+<li style="margin-top:10px;">{{ form.email }}</li>
+<li style="margin-top:10px;">{{ form.password }}</li>
+<li style="margin-top:10px;">{{ form.address }}</li>
+<li style="margin-top:10px;">{{ form.detailAddress }}</li>
+<li style="margin-top:10px;">{{ form.phoneNumber }}</li>
+</ul>
+</div>
+<div style="width:100%; text-align:center; margin-left:20px;">
+<input type="submit" value="가입하기">
+</form>
+<input type="button" value="예약페이지" onClick="location.href='/reservation/revstart/'">
+</div>
+{% endblock %}
+<br/>
+<br/>
+<div>
+<br/>
+<br/>
+</div>
+
+

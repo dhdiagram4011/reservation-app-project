@@ -28,7 +28,8 @@ li {
 </ul>
 </div>
 <div style="width:100%; text-align:center; margin-left:20px;">
-<button name="member_choice" value="{{ member.id }}">수정하기</button></li>
+<input type="hidden" name="member_choice" value="{{ member.id }}">수정하기
+
 </form>
 </div>
 {% endblock %}

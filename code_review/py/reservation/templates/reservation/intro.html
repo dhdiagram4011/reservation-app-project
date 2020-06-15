@@ -1,0 +1,50 @@
+{% block content %}
+{% load static %}
+<head>
+<style>
+body {    
+background-image:url('{{ STATIC_URL }}/korean-air-img.png')
+/*background-image:url( "{ static 'korean-air-img.png' %}")*/
+}
+</style>
+</head>
+<body>
+<div>
+<p style=font-size:12px>
+항공권 예매 페이지 입니다.<br/>
+항공권 예매는 회원가입 후 예약 가능하며 비회원은 예약이 불가능 합니다.<br/>
+</p>
+<br/>
+<br/>
+<br/>
+<div>
+{% csrf_token %}
+<style>
+ul{
+    list-style:none;
+}
+</style>
+<div id="wrapper" style="margin-bottom:30px; font-size:13px;">
+<li style="float:left; list-style:none;"><input type="submit", value="회원가입", onClick="location.href='/auth/register/'"></li>
+<li style="float:left; list-style:none;"><input type="submit", value="항공권예약하기" onClick="location.href='/reservation/revstart/'"></li>
+</ul>
+
+{% endblock %}
+<br/>
+<br/>
+<br/>
+<div>
+<div>
+<div id="address" style="position:absoltue; margin-top:150px">
+<p style=font-size:12px>주) 대한항공 | 대표이사 : 우기홍 외 1명 | 주소 : 서울특별시 강서구 하늘길 260<br/>
+대표전화 : 1588-2001 / 02-2656-2001<br/>
+사업자 등록번호 : 110-81-14794 | 통신판매업신고 : 강서 제 16-3010<br/>
+개인정보보호책임자 : 여객사업본부장 이진호 전무<br/>
+© 1997-2020 KOREAN AIR<br/></p>
+<br/>
+</div>
+</div>
+</div>
+</body>
+
+

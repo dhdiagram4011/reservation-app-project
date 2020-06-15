@@ -1,0 +1,55 @@
+{% block content %}
+<head>
+<style>
+body {    
+background-image:url('/app/Reservation-search-app/Reservation-app/ReservationProject/static/korean-air-img.png')
+}
+</style>
+</head>
+<body>
+<script>
+alert("요청하신 날짜의 항공권이나 선택하신 좌석(일반석/프레스티지석/장애우석)이 존재하지 않습니다")
+location.href= "/reservation/revstart/" 
+</script>
+<form action="/reservation/revstart/" method="get">
+<div>
+<p style=font-size:12px>항공권 예매 페이지 입니다.<br/>
+구간별 검색이 가능합니다.<br/>
+비수기에는 성수기보다 10% 가격 할인으로 제공되며 성수기에는 평소보다 10% 인상된 기격으로 제공됩니다.<br/>
+</p>
+<br/>
+<br/>
+<br/>
+<div>
+{% csrf_token %}
+<style>
+ul{
+    list-style:none;
+}
+</style>
+<div style="font-size:13px;">
+<p>조회하신 여정의 항공권이 없습니다. 다른 여정을 선택해 주세요</p>
+</div>
+<div id="wrapper" style="margin-bottom:30px; font-size:13px;">
+<li style="float:left; list-style:none;"><input type="submit", value="조회페이지로 돌아가기"></li>
+</ul>
+
+{% endblock %}
+<br/>
+<br/>
+<br/>
+<div>
+<div>
+<div id="address" style="position:absoltue; margin-top:300px">
+<p style=font-size:12px>주) 대한항공 | 대표이사 : 우기홍 외 1명 | 주소 : 서울특별시 강서구 하늘길 260<br/>
+대표전화 : 1588-2001 / 02-2656-2001<br/>
+사업자 등록번호 : 110-81-14794 | 통신판매업신고 : 강서 제 16-3010<br/>
+개인정보보호책임자 : 여객사업본부장 이진호 전무<br/>
+© 1997-2020 KOREAN AIR<br/></p>
+<br/>
+</div>
+</div>
+</div>
+</body>
+
+

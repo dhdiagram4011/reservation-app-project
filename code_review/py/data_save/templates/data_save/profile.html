@@ -1,7 +1,5 @@
 {% block content %}
-<form method="POST" action="{% url 'data_save:memberlist' %}">
-{% csrf_token %}
-<input type="hidden" name="mem_register" value="{{ member.id }}" />
+<form method="POST" action="{% url 'data_save:profileRegister' %}">{% csrf_token %}
 <head>
 
 <style>
@@ -30,7 +28,7 @@ li {
 </ul>
 </div>
 <div style="width:100%; text-align:center; margin-left:20px;">
-<button type="submit">가입하기</button>
+<input type="submit" value="가입하기">
 </form>
 </div>
 {% endblock %}

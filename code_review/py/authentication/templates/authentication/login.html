@@ -1,0 +1,33 @@
+{% block content %}
+<head>
+<style>
+body {    
+background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/asina01.jpeg")
+}
+</style>
+</head>
+<body>
+<form method="POST">
+
+{% csrf_token %}
+<div>
+<div style="width:100%; text-align:center; margin-top:200px;">
+<p style="backgroud-color:white; font-size:12px;">
+<strong style="text-decoration:underline;">항공권 예약을 위한 로그인 페이지 입니다. 가입시 입력한 이메일/패스워드를 정확히 입력하여 주세요</strong><br/>
+</p>
+</div>
+<div>
+<div style="width:100%; text-align:center; margin-top:50px;">
+{{ form.username }}  {{ form.password }}<br/>
+</div>
+{% endblock %}
+<div>
+<div style="width:100%; text-align:center; margin-top:30px;">
+<input type="submit" , value="로그인">
+</form>
+<input type="button" , value="회원가입" onclick="location.href='/auth/register/'">
+</div>
+</div>
+</body>
+
+

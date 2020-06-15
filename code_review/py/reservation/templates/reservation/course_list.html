@@ -1,0 +1,41 @@
+
+{% block content %}
+{% load static %}
+
+{% for course in courses %}
+<form action="{% url 'reservation:email_ticket' %}" method="GET">
+{% csrf_token %}
+<input type="hidden" name="course_choice" value="{{ course.id }}" />
+<br/>
+<style>
+/*body {    
+background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/csbground.jpg")
+}
+*/
+ul{
+    list-style:none;
+}
+</style>
+<div id="wrapper" style="margin-bottom:30px;">
+<ul style="border:1px; color:black;">
+<li style="float:left"><strong>ID| {{ course.id }}</strong><br/></li>
+<li style="float:left; margin-left:30px;"><strong>기종| {{ course.FlightNumber }}</strong><br/></li>
+<li style="float:left; margin-left:30px;"><strong>편명| {{ course.FlightAircraft }}</strong><br/></li>
+<li style="float:left; margin-left:30px;"><strong>출발| {{ course.starting_point }}</strong><br/></li>
+<li style="float:left; margin-left:30px;"><strong>도착 | {{ course.arrival }}</strong><br/></li>
+<li style="float:left; margin-left:30px;">가는날 | {{ course.daytogo | date:'Y/m/d' }}<br/></li>
+<li style="float:left; margin-left:30px;">오는날 | {{ course.comingDay | date:'Y/m/d' }} <br/></li>
+<li style="float:left; margin-left:30px;">비행시간 | {{ course.flight_time | date:'H:i' }}<br/></li>
+<li style="float:left; margin-left:30px;">좌석 | {{ course.SeatClass }}<br/></li>
+<li style="float:left; margin-left:30px;">가격 | {{ course.Price }}<br/></li>
+<li style="float:left; margin-left:1100px; position:absolute;"><button type="submit">예약하기</button></li>
+</ul>
+</form>
+<br/>
+{% endfor %}
+{% endblock %}
+
+
+
+
+

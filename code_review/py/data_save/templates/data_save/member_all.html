@@ -1,0 +1,14 @@
+<form action="{% url 'data_save:profileEdit' %}" method="GET">{% csrf_token %}
+{% block content %}
+
+{% for member in members %}
+{{ member.name }}<br/>
+{{ member.email }}<br/>
+{{ member.phone }}<br/>
+{{ member.address_01 }}<br/>
+{{ member.address_02 }}<br/>
+<br/>
+{% endfor %}
+{% endblock %}
+<button name="member_choice" value="{{ member.id }}">수정하기</button></li>
+</form>
