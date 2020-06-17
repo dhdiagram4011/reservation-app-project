@@ -1,8 +1,10 @@
-<form action="{% url 'reservation:email_ticket' %}" method="POST">
 {% block content %}
 {% load static %}
-{% csrf_token %}
 {% for course in courses %}
+<form action="{% url 'reservation:email_ticket' %}" method="GET">
+{% csrf_token %}
+<input type="hidden" name="course_choice" value="{{ course.id }}" />
+
 <br/>
 <style>
 /*body {    
@@ -25,7 +27,7 @@ ul{
 <li style="float:left; margin-left:30px;">비행시간 | {{ course.flight_time | date:'H:i' }}<br/></li>
 <li style="float:left; margin-left:30px;">좌석 | {{ course.SeatClass }}<br/></li>
 <li style="float:left; margin-left:30px;">가격 | {{ course.Price }}<br/></li>
-<li style="float:left; margin-left:1100px; position:absolute;"><button name="course_choice" value="{{ course.id }}">예약하기</button></li>
+<li style="float:left; margin-left:1100px; position:absolute;"><button type="submit">예약하기</button></li>
 </ul>
 </form>
 <br/>

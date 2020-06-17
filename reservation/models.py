@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
 
 STARTINGPOINT = (
     ('김포', '김포'),
@@ -88,7 +89,4 @@ class emailTicket(models.Model):
     flight_time = models.DateTimeField()
     daytogo = models.DateField()
     comingDay = models.DateField()
-    #SeatClass = models.ForeignKey('seatClass', on_delete=models.CASCADE)
-    #FlightNumber = models.ForeignKey('flightNumber', on_delete=models.CASCADE)
-    #FlightAircraft = models.ForeignKey('flightAircraft', on_delete=models.CASCADE)
-    #Price = models.ForeignKey('price', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)

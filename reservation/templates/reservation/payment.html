@@ -22,6 +22,7 @@ body {
 <strong>오는날 |</strong> {{ courses.comingDay | date:'Y년 m월 d일' }}<br/>
 <strong>좌석등급 |</strong> {{ courses.SeatClass  }}<br/>
 <strong>가격 |</strong> {{ courses.Price }}<br/>
+<strong>예약자 |</strong> {{ request.user }}<br/>
 </div>
 <div id="wrapper" style="width:100%; text-align:center;">
 <ul style="text-decoration:none; list-style:none; margin-left:-30px">
