@@ -30,7 +30,6 @@ def profileEdit(request):
         return render(request, 'data_save/profile_edit.html', context)
 
 
-
 # 회원가입
 def profileRegister(request):
     if request.method == 'GET':

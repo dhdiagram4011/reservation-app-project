@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
 from .forms import registrationForm, loginForm
 from .models import MyUser
 from django.utils import timezone
@@ -32,26 +32,17 @@ def registration(request):
         form = registrationForm(request.POST)
         if form.is_valid():
             post = form.save()
-            username = request.POST["username"]
-            email = request.POST["email"]
-            password = request.POST["password"]
-            koreanLastname = request.POST["koreanLastname"]
-            koreanFirstname = request.POST["koreanFirstname"]
-            englishLastname = request.POST["englishLastname"]
-            englishFirstname = request.POST["englishFirstname"]
-            address = request.POST["address"]
-            detailAddress = request.POST["detailAddress"]
-            phoneNumber = request.POST["phoneNumber"]
-            print(request.POST["username"])
-            print(request.POST["email"])
-            print(request.POST["password"])
-            print(request.POST["koreanLastname"])
-            print(request.POST["koreanFirstname"])
-            print(request.POST["englishLastname"])
-            print(request.POST["englishFirstname"])
-            print(request.POST["address"])
-            print(request.POST["detailAddress"])
-            print(request.POST["phoneNumber"])
+            userlists = get_object_or_404(MyUser, id=int(request.GET.get('register_member',0)))
+            new_userlist = MyUser(
+                username = userlists.username,
+                email = userlists.email,
+                koreanLastname = userlists.koreanLastname,
+                englishLastname  = userlists.englishLastname,
+                address = userlists.address,
+                detailAddress = userlists.detailAddress,
+                phoneNumber = userlists.phoneNumber,         
+            )
+            new_userlist.save()
             usermail(request)
         return redirect('authentication:registrationSuccess')
 
@@ -76,19 +67,10 @@ def login(request):
         user = authenticate(username=username, password=password)
 
         if user is not None:
-            return redirect('reservation:revstart')
-            
+            return redirect('reservation:revstart')            
         else:
             return HttpResponse('아이디(ID) 또는 패스워드(PASSWORD)를 확인해 주세요')
 
-
-
-# def loginSuccess(request):
-#     user_pks = MyUser.objects.filter(username=request.POST['username'], password=request.POST['password'])
-#     if user_pks:
-#         return render(request, 'authentication/login_success.html', {'user_pks': user_pks})
-#     else:
-#         return render(request, 'authentication/login_failed.html')
 
 
 def logout(request):
