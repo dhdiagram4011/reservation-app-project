@@ -90,3 +90,6 @@ class emailTicket(models.Model):
     daytogo = models.DateField()
     comingDay = models.DateField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    
+
+    
