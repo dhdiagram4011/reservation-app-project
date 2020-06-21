@@ -138,10 +138,4 @@ AUTH_USER_MODEL = 'authentication.MyUser'
 
 STATIC_URL = '/static/'
 
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-    '/app/static/',
-)
-
 STATIC_ROOT = os.path.join(BASE_DIR, '/app/static/')
