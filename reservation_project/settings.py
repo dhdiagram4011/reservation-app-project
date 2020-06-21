@@ -130,8 +130,8 @@ LOGIN_URL = '/auth/login/'
 # EMAIL
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'rlaehgud21764011@gmail.com'
-EMAIL_HOST_PASSWORD = 'revaiaofsikdkvsf'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 AUTH_USER_MODEL = 'authentication.MyUser'
