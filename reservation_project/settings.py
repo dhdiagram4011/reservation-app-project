@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'reservation',
     'authentication',
     'data_save',
-    'django_crontab',
 ]
 
 MIDDLEWARE = [
