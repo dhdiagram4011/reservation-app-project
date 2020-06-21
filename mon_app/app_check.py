@@ -1,13 +1,13 @@
 import requests
 import json
 
-noti_url = 'https://hooks.slack.com/services/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'
+noti_url = 'https://hooks.slack.com/services/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'
 headers = {'Content-Type':'application/json'}
 
 
 def main_host(requests):
 
-    main_host = 'http://130.211.119.103'
+    main_host = 'http://35.225.159.194:8100'
     response = requests.get(main_host)
     result = response.status_code
 
@@ -21,7 +21,7 @@ def main_host(requests):
 
 def registration_page(requests):
 
-    registration_page = 'http://130.211.119.103/auth/register'
+    registration_page = 'http://35.225.159.194:8100/auth/register'
     response = requests.get(registration_page)
     result = response.status_code
 
@@ -35,7 +35,7 @@ def registration_page(requests):
 
 def admin_page(requests):
 
-    admin_page = 'http://130.211.119.103/admin'
+    admin_page = 'http://35.225.159.194:8100/admin'
     response = requests.get(admin_page)
     result = response.status_code
 
@@ -47,10 +47,9 @@ def admin_page(requests):
         requests.post(noti_url, headers=headers, data=json.dumps(data))
 
 
-
 def login_page(requests):
 
-    login_page = 'http://130.211.119.103/auth/login'
+    login_page = 'http://35.225.159.194:8100/auth/login'
     response = requests.get(login_page)
     result = response.status_code
 
@@ -62,10 +61,9 @@ def login_page(requests):
         requests.post(noti_url, headers=headers, data=json.dumps(data))
 
 
-
 def reservation_page(requests):
 
-    reservation_page = 'http://130.211.119.103/reservation/revstart'
+    reservation_page = 'http://35.225.159.194:8100/reservation/revstart'
     response = requests.get(reservation_page)
     result = response.status_code
 
@@ -79,7 +77,7 @@ def reservation_page(requests):
 
 def date_page(requests):
 
-    date_page = 'http://130.211.119.103/reservation/date_search/'
+    date_page = 'http://35.225.159.194:8100/reservation/date_search/'
     response = requests.get(date_page)
     result = response.status_code
 
