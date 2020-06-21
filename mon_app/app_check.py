@@ -1,7 +1,7 @@
 import requests
 import json
 
-noti_url = 'https://hooks.slack.com/services/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'
+noti_url = 'https://hooks.slack.com/services/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'
 headers = {'Content-Type':'application/json'}
 
 
