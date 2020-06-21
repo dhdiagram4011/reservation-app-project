@@ -137,8 +137,4 @@ EMAIL_USE_TLS = True
 AUTH_USER_MODEL = 'authentication.MyUser'
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, '/app/static/')
