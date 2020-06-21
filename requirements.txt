@@ -1,3 +1,3 @@
-pylint
+Django==2.1.5
 autopep8
-django==2.1.5
+pylint

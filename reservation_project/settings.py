@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'reservation',
     'authentication',
     'data_save',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -122,11 +123,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/reservation/revstart/'
 LOGIN_URL = '/auth/login/'
-LOGOUT_REDRIECT_URL = ''
 
 # EMAIL
 EMAIL_HOST = 'smtp.gmail.com'
@@ -138,8 +137,8 @@ EMAIL_USE_TLS = True
 AUTH_USER_MODEL = 'authentication.MyUser'
 
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'bg_img')
+STATIC_ROOT = os.path.join(BASE_DIR, '/app/static/')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'bg_img'),
+    os.path.join(BASE_DIR, 'static'),
 )
