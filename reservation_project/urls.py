@@ -25,5 +25,5 @@ urlpatterns = [
     path('reservation/', include('reservation.urls')),
     path('auth/', include('authentication.urls')),
     path('data_save/', include('data_save.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

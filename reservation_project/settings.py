@@ -78,12 +78,25 @@ WSGI_APPLICATION = 'reservation_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ticketapp',
+        'USER': 'root',
+        'PASSWORD': 'k20504003',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
@@ -129,12 +142,11 @@ LOGIN_URL = '/auth/login/'
 # EMAIL
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'rlaehgud21764011@gmail.com'
+EMAIL_HOST_PASSWORD = 'yumdthjymxapcvop'
 EMAIL_USE_TLS = True
 
 AUTH_USER_MODEL = 'authentication.MyUser'
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
