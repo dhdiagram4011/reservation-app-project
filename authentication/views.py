@@ -7,9 +7,10 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.http import JsonResponse
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
+from django.views.decorators.cache import cache_page
 
 
 # 회원가입 후 가입정보 이메일 발송
@@ -56,6 +57,7 @@ def already_exists(request):
     return render(request, 'authentication/already_exists.html')
 
 
+@cache_page(60 * 20)
 def login(request):
     if request.method == 'GET':
         form = loginForm()
