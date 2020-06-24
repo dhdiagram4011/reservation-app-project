@@ -150,3 +150,12 @@ AUTH_USER_MODEL = 'authentication.MyUser'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+## ticket-app- /auth/login redis cacheing
+
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '/tmp/redis.sock',
+    }
+}
