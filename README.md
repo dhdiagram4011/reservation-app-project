@@ -20,6 +20,7 @@
     - 회원가입 : /auth/register/
     - 로그인 : /auth/login/
     - 회원정보보기 : /auth/myinfo/
+    - 회원정보수정 : /auth/
     - 회원탈퇴 : /auth/unregister/
     - 항공권 예매 : /reservation/revstart/
     - 항공권 검색결과 조회 : /reservation/course_search/    
@@ -51,7 +52,7 @@ MIT lisence(dhdiagram@gmail.com)
 
 ## 개발자 정보
 
-    김도형(dohyoung Kim)<br/>
-    Email : dhdiagram@gmail.com<br/>
-    DemoSite : ing ...<br/>
+    김도형(dohyoung Kim)
+    Email : dhdiagram@gmail.com
+    DemoSite : ing ... 
 
