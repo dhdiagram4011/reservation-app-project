@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
 from .forms import registrationForm, loginForm
 from .models import MyUser
@@ -58,7 +57,7 @@ def already_exists(request):
     return render(request, 'authentication/already_exists.html')
 
 
-@cache_page(60 * 20)
+#@cache_page(60 * 20)
 def login(request):
     if request.method == 'GET':
         form = loginForm()
@@ -83,12 +82,17 @@ def logout(request):
         return render(request, 'reservation/logout_error.html')
 
 
-#나의 정보 보기
+# 나의 정보 보기
 def myinfo(request):
     myprofile_pks = MyUser.objects.get(id=request.POST['myinfo'])
     return render(request, 'authentication/myinfo.html', {'myprofile_pks': myprofile_pks})
 
 
-
+# 회원탈퇴
 def unregister(request):
         pass
+
+
+# 회원정보 수정
+def edit(request):
+    pass
