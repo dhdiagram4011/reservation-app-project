@@ -32,18 +32,10 @@ def registration(request):
     elif request.method == 'POST':
         form = registrationForm(request.POST)
         if form.is_valid():
-            post = form.save()
-            userlists = get_object_or_404(MyUser, id=int(request.GET.get('register_member',0)))
-            new_userlist = MyUser(
-                username = userlists.username,
-                email = userlists.email,
-                koreanLastname = userlists.koreanLastname,
-                englishLastname  = userlists.englishLastname,
-                address = userlists.address,
-                detailAddress = userlists.detailAddress,
-                phoneNumber = userlists.phoneNumber,         
-            )
-            new_userlist.save()
+            user = form.save(commit=False)
+            password = request.POST.get('password','-')
+            user.set_password(password)
+            user.save()
             usermail(request)
         return redirect('authentication:registrationSuccess')
 
@@ -63,13 +55,14 @@ def login(request):
         form = loginForm()
         return render(request, 'authentication/login.html', {'form': form})
     elif request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username','')
+        password = request.POST.get('password','')
 
         user = authenticate(username=username, password=password)
 
         if user is not None:
-            return redirect('reservation:revstart')            
+            login(request, user)
+            return redirect('reservation:revstart')
         else:
             return HttpResponse('아이디(ID) 또는 패스워드(PASSWORD)를 확인해 주세요')
 
