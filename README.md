@@ -26,14 +26,11 @@
 
 ## License
 
-MIT lisence
+MIT lisence(dhdiagram@gmail.com)
 
 ## 개발자 정보
 
-김도형(dohyoung Kim)
-
-Email : dhdiagram@gmail.com
-
-Demo : http://testsite.com
-SNS :  ....
+김도형(dohyoung Kim)<br/>
+Email : dhdiagram@gmail.com<br/>
+DemoSite : ing ...<br/>
 
