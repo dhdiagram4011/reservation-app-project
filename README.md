@@ -11,7 +11,7 @@
     python manage.py runserver 0.0.0.0:80   
 
 ### 사용법
-- 관리자페이지 : /admin
+- 관리자페이지 : /admin - 아이디 : dhdiagram , 패스워드 : k20504003 관리자 페이지 접속 가능
 - 회원가입 : /auth/register
 - 로그인 : /auth/login
 - 항공권 예매 : /reservation/revstart/

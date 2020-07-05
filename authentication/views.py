@@ -13,6 +13,7 @@ from django.contrib.auth.hashers import make_password
 from django.views.decorators.cache import cache_page
 
 
+
 # 회원가입 후 가입정보 이메일 발송
 def usermail(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
