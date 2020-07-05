@@ -3,6 +3,11 @@
 ## 프로젝트 정보
 
 
+### Django 버전
+    Django == 2.1.5
+    virtualenv : Python Anaconda
+
+
 ### 설치 및 실행 방법
     git clone ${git url}
     cd reservation_project
@@ -27,8 +32,8 @@
 
 
 ### 어플리케이션 배포
-    - Jenkins를 이용한 어플리케이션 배포 스크립트 
-    """
+    Jenkins를 이용한 어플리케이션 배포 스크립트 
+    -
     Jenkins 접속 : localhost:9100
     cd /app
     source ~/.bashrc
@@ -50,7 +55,6 @@
     python manage.py migrate 
     systemctl restart ticketapp
     systemctl restart nginx
-    """
 
 
 ### 관리자 페이지 이용방법(관리자가 비행기 티켓 일정을 추가)
