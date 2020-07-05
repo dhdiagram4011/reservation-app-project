@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.urls import path
-from .views import login, logout, registration, registrationSuccess, already_exists, unregister,  myinfo, edit
+from .views import login_view, logout, registration, registrationSuccess, already_exists, unregister,  myinfo, edit
 
 app_name = "authentication"
 
 urlpatterns = [
-    path('login/', login, name='login'),
+    path('login/', login_view, name='login'),
     path('logout/', logout, name='logout'),
     path('register/', registration, name='registration'),
     path('registrationSuccess/', registrationSuccess, name='registrationSuccess'),

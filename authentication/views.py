@@ -6,10 +6,10 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.http import JsonResponse
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth import authenticate
+from django.contrib.auth import login, authenticate
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
-from django.views.decorators.cache import cache_page
+# from django.views.decorators.cache import cache_page
 
 
 
@@ -32,7 +32,7 @@ def registration(request):
     elif request.method == 'POST':
         form = registrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
+            user = form.save(commit=False) # DB에 바로 저장하지 않음
             password = request.POST.get('password','-')
             user.set_password(password)
             user.save()
@@ -50,7 +50,7 @@ def already_exists(request):
 
 
 #@cache_page(60 * 20)
-def login(request):
+def login_view(request):
     if request.method == 'GET':
         form = loginForm()
         return render(request, 'authentication/login.html', {'form': form})
