@@ -83,7 +83,7 @@ def revstart(request):
             daytogo = request.POST["daytogo"]
             comingDay = request.POST["comingDay"]
             SeatClass = request.POST["SeatClass"]
-        return redirect('course_search')
+        return redirect('reservation:course_search')
     else:
         form = reservationForm()
     return render(request, 'reservation/rev_start.html', {'form': form})
@@ -109,11 +109,25 @@ def payment(request):
 # 티켓조회 및 해당 일자에 티켓이 없을 시 별도 안내 페이지 요청
 # @login_required
 def course_search(request):
-    if flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass']).exists():
-        courses = flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass'])
-        return render(request, 'reservation/course_list.html', {'courses': courses})
+    courses = flightSection.objects.filter(
+        starting_point = request.GET.get('starting_point',''), #없으면 None 반환
+        arrival = request.GET.get('arrival',''),
+        daytogo = request.GET.get('daytogo',''),
+        comingDay = request.GET.get('comingDay',''),
+        SeatClass = request.GET.get('SeatClass','')
+    )
+    if courses.exists(): # 검색한 코스가 DB에 존재하면
+        return render(request, 'reservation/course_list.html', {'courses':courses})
     else:
         return render(request, 'reservation/sch_does_not_exist.html')
+
+
+# def course_search(request):
+#     if flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass']).exists():
+#         courses = flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass'])
+#         return render(request, 'reservation/course_list.html', {'courses': courses})
+#     else:
+#         return render(request, 'reservation/sch_does_not_exist.html')
 
 
 # 날짜기반 항공권 조회기능
