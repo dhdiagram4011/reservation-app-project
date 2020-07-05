@@ -64,8 +64,8 @@ def login_view(request):
             login(request, user)
             return redirect('reservation:revstart')
         else:
-            return HttpResponse('아이디(ID) 또는 패스워드(PASSWORD)를 확인해 주세요')
-
+            return render(request, 'authentication/idpw_does_not_exist.html')
+            
 
 
 def logout(request):
