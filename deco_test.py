@@ -5,18 +5,34 @@
 #         return func(*args , **kwargs)
 #     return inter_charprint
 
-def decofunc(func):
-    def wrapper(*args, **kwargs):
-        print("input")
-        print(func(*args, **kwargs))
+# def decofunc(func):
+#     def wrapper(*args, **kwargs):
+#         print("input")
+#         print(func(*args, **kwargs))
+#         print('output')
+
+#     return wrapper
+
+
+class Decofunc:
+    def __init__(self, function):
+        self.function = function
+
+    def __call__(self, *args, **kwargs):
+        print('input')
+        print(self.function(*args, **kwargs))
         print('output')
 
-    return wrapper
+@Decofunc
+def rescon():
+    return 'class'
+
+rescon()
 
 
-@decofunc
-def new_decofunc():
-    return 'new_decofunc'
+# def new_decofunc():
+#     return 'new_decofunc'
+#     def inner_new_decofunc():
+#         return 'new_decofunc_1'
 
-
-new_decofunc()
+# new_decofunc()
