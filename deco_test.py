@@ -1,3 +1,6 @@
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+
 #decorator
 
 # def charprint(func):
@@ -10,7 +13,6 @@
 #         print("input")
 #         print(func(*args, **kwargs))
 #         print('output')
-
 #     return wrapper
 
 
@@ -23,9 +25,10 @@ class Decofunc:
         print(self.function(*args, **kwargs))
         print('output')
 
+
 @Decofunc
 def rescon():
-    return 'class'
+    return 'aaa'
 
 rescon()
 
