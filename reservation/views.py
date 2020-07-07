@@ -90,6 +90,7 @@ def revstart(request):
 
 
 
+# 예약 후 예약 결과를 Email Ticket 테이블에 저장
 def payment(request):
     if request.method == 'POST':
         courses = flightSection.objects.get(id=request.POST['course_choice'])
@@ -101,6 +102,8 @@ def payment(request):
             flight_time = request.POST["flight_time"]
             daytogo = request.POST["daytogo"]
             comingDay = request.POST["comingDay"]
+            Price = request.POST["Price"]
+            SeatClass = request.POST["SeatClass"]
             eticket_send(request)
         return render(request, 'reservation/payment.html', {'courses': courses})
 
