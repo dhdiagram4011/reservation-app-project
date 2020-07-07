@@ -51,6 +51,10 @@ class emailTicketForm(forms.ModelForm):
     ranking = forms.ChoiceField(label='좌석등급', choices=RANKING)
     daytogo = forms.DateField(label='가는날', input_formats=['%m-%d-%Y'], widget=forms.TextInput(attrs={'placeholder': '가는날:2020-05-05'}))
     comingDay = forms.DateField(label='오는날', input_formats=['%m-%d-%Y'], widget=forms.TextInput(attrs={'placeholder': '오는날:2020-05-05'}))
+    Price = forms.ChoiceField()
+    SeatClass = forms.ChoiceField(label='좌석등급', choices=RANKING)
+    #user = forms.ChoiceField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+
 
 
 class datesearchForm(forms.ModelForm):

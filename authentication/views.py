@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
-from .forms import registrationForm, loginForm
+from .forms import registrationForm, loginForm, MemberListForm
 from .models import MyUser
 from django.utils import timezone
 from django.template.loader import render_to_string
@@ -25,19 +25,56 @@ def usermail(request):
 
 
 # 회원가입
+# def registration(request):
+#     if request.method == 'GET':
+#         form = registrationForm(request.GET)
+#         return render(request, 'authentication/registration.html' , {'form':form})
+#     elif request.method == 'POST':
+#         form = MemberListForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             password = request.POST.get('password','-')
+#             user.set_password(password)
+#             user.save()
+#             usermail(request)
+#         return redirect('authentication:registrationSuccess')
+
+
 def registration(request):
     if request.method == 'GET':
         form = registrationForm(request.GET)
         return render(request, 'authentication/registration.html' , {'form':form})
     elif request.method == 'POST':
-        form = registrationForm(request.POST)
+        form = MemberListForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False) # DB에 바로 저장하지 않음
-            password = request.POST.get('password','-')
-            user.set_password(password)
-            user.save()
+            post = form.save(commit=False)
+            koreanFirstname = request.POST["koreanFirstname"]
+            koreanLastname = request.POST["koreanLastname"]
+            englishLastname = request.POST["englishLastname"]
+            englishFirstname = request.POST["englishFirstname"]
+            address = request.POST["address"]
+            email = request.POST["email"]
+            detailAddress = request.POST["detailAddress"]
+            phoneNumber = request.POST["phoneNumber"]            
+            password = request.POST["password"]
+            #password = request.POST.get('password','-')
+            post.set_password(password)
+            post.save()
             usermail(request)
         return redirect('authentication:registrationSuccess')
+
+
+        # if form.is_valid():
+        #     post = form.save()
+        #     starting_point = request.POST["starting_point"]
+        #     arrival = request.POST["arrival"]
+        #     flight_time = request.POST["flight_time"]
+        #     daytogo = request.POST["daytogo"]
+        #     comingDay = request.POST["comingDay"]
+        #     Price = request.POST["Price"]
+        #     SeatClass = request.POST["SeatClass"]
+
+
 
 
 def registrationSuccess(request):
