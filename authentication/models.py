@@ -22,10 +22,20 @@ class MyUser(AbstractUser):
     published_date = models.DateTimeField(null=True, blank=True)
 
 
-# @receiver(pre_save, sender=MyUser)
-# def password_hashing(instance, **kwargs):
-#     if not is_password_usable(instance.password):
-#         instance.passoword = make_password(instance.password)
+class MemberList(models.Model):
+    koreanLastname = models.CharField(max_length=5)
+    koreanFirstname = models.CharField(max_length=5)
+    englishLastname = models.CharField(max_length=10)
+    englishFirstname = models.CharField(max_length=50)
+    address = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
+    password = models.CharField(max_length=200)
+    detailAddress = models.CharField(max_length=200)
+    phoneNumber = models.CharField(max_length=15)
+    created_date = models.DateTimeField(auto_now_add=True)
+    published_date = models.DateTimeField(null=True, blank=True)
+
+
 
     def publish(self):
         self.published_date = timezone.now()
