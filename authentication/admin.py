@@ -13,7 +13,5 @@ class MemberListAdmin(admin.ModelAdmin):
 
 
 
-
-
 admin.site.register(MyUser, MyUserAdmin)
 admin.site.register(MemberList, MemberListAdmin)

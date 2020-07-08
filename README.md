@@ -3,6 +3,16 @@
 ## 프로젝트 정보
 
 
+### 어플리케이션 Preview(미리보기)
+1.회원가입
+
+2.예약하기
+
+3.항공권 예매 내역 조회
+
+4.출발일 기준 항공권 조회
+
+
 ### DemoSite(제작중)
     - 관리자페이지 : demo.dhdiagram.me/admin - 아이디, 패스워드로 접근 가능
     - 회원가입 : demo.dhdiagram.me/auth/register/
