@@ -6,18 +6,18 @@
 ### 어플리케이션 Preview(미리보기)
 
 ##### 1.회원가입,로그인
-![](register_login.mov)
+![](./register_login.mov)
 
 
 ##### 2.항공권예약하기
-![](ticket_reservation.mov)
+![](./ticket_reservation.mov)
 
 
 ##### 3.항공권 예매 내역 조회
 
 
 ##### 4.출발일 기준 항공권 조회
-![](airline_ticket_search.mov)
+![](./airline_ticket_search.mov)
 
 
 
