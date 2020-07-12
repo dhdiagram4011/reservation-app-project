@@ -40,17 +40,18 @@
 
 
 ### DemoSite(제작중)
-    - 관리자페이지 : demo.dhdiagram.me/admin - 아이디, 패스워드로 접근 가능
-    - 회원가입 : demo.dhdiagram.me/auth/register/
-    - 로그인 : demo.dhdiagram.me/auth/login/
-    - 회원정보보기 : demo.dhdiagram.me/auth/myinfo/
-    - 회원정보수정 : demo.dhdiagram.me/auth/edit/
-    - 회원탈퇴 : demo.dhdiagram.me/auth/unregister/
-    - 항공권 예매 : demo.dhdiagram.me/reservation/revstart/
-    - 항공권 검색결과 조회 : demo.dhdiagram.me/reservation/course_search/    
-    - 출발일 기준 항공권 조회 : demo.dhdiagram.me/reservation/date_search/
-    - 출발일 기준 항공권 조회 결과 : demo.dhdiagram.me/reservation/date_search_result/
-
+    - 관리자페이지 : demo.dhdiagram.me/admin - 아이디, 패스워드로 접근 가능 (구현완료)
+    - 회원가입 : demo.dhdiagram.me/auth/register/ (구현완료)
+    - 로그인 : demo.dhdiagram.me/auth/login/ (구현중 - 90% 진행)
+    - 회원정보보기 : demo.dhdiagram.me/auth/myinfo/ (구현중 - 90% 진행)
+    - 회원정보수정 : demo.dhdiagram.me/auth/edit/ (구현중 - 90% 진행)
+    - 회원탈퇴 : demo.dhdiagram.me/auth/unregister/ (구현중)
+    - 항공권 예매 : demo.dhdiagram.me/reservation/revstart/ (구현완료)
+    - 항공권 검색결과 조회 : demo.dhdiagram.me/reservation/course_search/ (구현완료)    
+    - 출발일 기준 항공권 조회 : demo.dhdiagram.me/reservation/date_search/ (구현완료)
+    - 출발일 기준 항공권 조회 결과 : demo.dhdiagram.me/reservation/date_search_result/ (구현완료)
+    - 예약내역 조회 : demo.dhdiagram.me/reservation/ticketing_list/ (구현중 - 90% 완료)
+    
 
 ### Django 버전
     Django == 2.1.5
