@@ -1,10 +1,12 @@
 # 항공권 예약 웹 어플리케이션 
 
 ### 프로젝트(어플리케이션 구성)
+    - Python 3.7
     - Django 2.1.5
     - Nginx
     - Gunicorn
     - SQLite
+    - Python Anaconda
 
 ### 프로젝트(배포구조)
     - GCP VM Instance
