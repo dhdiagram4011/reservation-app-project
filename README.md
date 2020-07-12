@@ -23,7 +23,8 @@
 
 
 ### Application production structure
-    {}
+![Sturcture](https://user-images.githubusercontent.com/50344658/87245571-45da9680-c481-11ea-86cc-39ac2ccc3325.jpg)
+
               
 ### 어플리케이션 Preview(미리보기)
 
@@ -51,7 +52,7 @@
     - 출발일 기준 항공권 조회 : demo.dhdiagram.me/reservation/date_search/ (구현완료)
     - 출발일 기준 항공권 조회 결과 : demo.dhdiagram.me/reservation/date_search_result/ (구현완료)
     - 예약내역 조회 : demo.dhdiagram.me/reservation/ticketing_list/ (구현중 - 90% 완료)
-    
+
 
 ### Django 버전
     Django == 2.1.5
