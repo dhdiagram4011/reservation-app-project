@@ -8,9 +8,9 @@
 
 ### 프로젝트(배포구조)
     - GCP VM Instance
-    - Docker Hub
+    - Docker Hub: Image Repository (https://hub.docker.com/repository/docker/dhdiagram/ticket-app-develop)
     - Kubernetes(kubernetes.io)
-    - Jenkins
+    - Jenkins 
 
 
 ### Source Code Structure
