@@ -1,4 +1,4 @@
-# 항공권 예약 사이트 
+# 항공권 예약 웹 어플리케이션 
 
 ### 프로젝트(어플리케이션 구성)
     - Django 2.1.5
@@ -21,6 +21,9 @@
         |__reservation(app) - 예약, 예약확인, 예약취소
         |__authentication(app) - 회원가입, 회원탈퇴, 회원별 예약정보
 
+
+### Application production structure
+    {}
               
 ### 어플리케이션 Preview(미리보기)
 
