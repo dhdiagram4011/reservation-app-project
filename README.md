@@ -25,7 +25,14 @@
 ### Application production structure
 ![Sturcture](https://user-images.githubusercontent.com/50344658/87245571-45da9680-c481-11ea-86cc-39ac2ccc3325.jpg)
 
-              
+
+### Application production structure Step
+    1. 로컬에서 소스코드 github로 업로드
+    2. 어플리케이션 이미지 생성을 위한 Dockerfile build 
+    3. Image Repository(Docker Hub)로 이미지 push (v0.1 ~)
+    4. GCP VM Instance로 배포 (Jenkins)
+
+
 ### 어플리케이션 Preview(미리보기)
 
 ##### 1.회원가입,로그인
