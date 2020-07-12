@@ -1,8 +1,27 @@
 # 항공권 예약 사이트 
 
-## 프로젝트 정보
+### 프로젝트(어플리케이션 구조)
+    - Django 2.1.5
+    - Nginx
+    - Gunicorn
+    - SQLite
+
+### 프로젝트(배포구조)
+    - GCP VM Instance
+    - Docker Hub
+    - Kubernetes(kubernetes.io)
+    - Jenkins
 
 
+### Source Code Structure
+    Django == 2.1.5
+    |
+    |___reservation_project(프로젝트 명)
+        |
+        |__reservation(app) - 예약, 예약확인, 예약취소
+        |__authentication(app) - 회원가입, 회원탈퇴, 회원별 예약정보
+
+              
 ### 어플리케이션 Preview(미리보기)
 
 ##### 1.회원가입,로그인
