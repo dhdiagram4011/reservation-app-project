@@ -18,8 +18,8 @@
     |
     |___reservation_project(프로젝트 명)
         |
-        |__reservation(app) - 예약, 예약확인, 예약취소
-        |__authentication(app) - 회원가입, 회원탈퇴, 회원별 예약정보
+        |__reservation(app) - 예약, 예약확인, 예약내역, 예약취소, 날짜별 운항스케쥴 조회
+        |__authentication(app) - 회원가입, 회원탈퇴, 회원별 예약정보, 회원리스트
 
 
 ### Application production structure
