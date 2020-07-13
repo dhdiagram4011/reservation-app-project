@@ -64,19 +64,6 @@ def registration(request):
         return redirect('authentication:registrationSuccess')
 
 
-        # if form.is_valid():
-        #     post = form.save()
-        #     starting_point = request.POST["starting_point"]
-        #     arrival = request.POST["arrival"]
-        #     flight_time = request.POST["flight_time"]
-        #     daytogo = request.POST["daytogo"]
-        #     comingDay = request.POST["comingDay"]
-        #     Price = request.POST["Price"]
-        #     SeatClass = request.POST["SeatClass"]
-
-
-
-
 def registrationSuccess(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     return render(request, 'authentication/registration_success.html', {'userlists': userlists})
