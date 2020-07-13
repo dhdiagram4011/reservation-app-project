@@ -99,17 +99,20 @@ def logout(request):
         return render(request, 'reservation/logout_error.html')
 
 
+
 # 나의 정보 보기
 def myinfo(request):
-    myprofile_pks = MyUser.objects.get(id=request.POST['myinfo'])
+    myprofile_pks = MyUser.objects.get(id=request.POST['uinfo'])
     return render(request, 'authentication/myinfo.html', {'myprofile_pks': myprofile_pks})
 
 
 # 회원탈퇴
 def unregister(request):
-        pass
-
-
+        if request.method == 'GET':
+            request.user.delete()
+            form = loginForm()
+        return render(request, 'authentication/unregister_success.html', {'form': form})
+        
 # 회원정보 수정
 def edit(request):
     pass
