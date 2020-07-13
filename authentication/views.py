@@ -91,14 +91,18 @@ def login_view(request):
             return render(request, 'authentication/idpw_does_not_exist.html')
             
 
-
+# 로그아웃
 def logout(request):
-    if request.method == 'POST':
-        return render(request, 'reservation/index.html')
-    else:
-        return render(request, 'reservation/logout_error.html')
-
-
+    auth.logout(request)
+    form = loginForm()
+    return render(request, 'authentication/login.html', {'form':form})
+    ## session
+    # username = request.POST.get('username','')
+    # password = request.POST.get('password','')
+    # user = authenticate(username=username, password=password)
+    # if request.session['user']:
+    #     del(request.session['user'])
+    # return render(request, 'authentication/login.html')
 
 # 나의 정보 보기
 def myinfo(request):
