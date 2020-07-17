@@ -5,6 +5,7 @@ from .models import flightSection, seatClass, emailTicket
 from django.http import HttpResponse, Http404, HttpResponseNotFound
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.utils import timezone
@@ -90,8 +91,24 @@ def revstart(request):
 
 
 # 예약내역 리스트
+#@login_required method
+def login_check(func):
+    def wrapper(request):
+        username = request.POST.get('username','')
+        password = request.POST.get('password','')
+        user = authenticate(username=username, password=password)
+        if user is None:
+            return render(request, 'authentication/idpw_does_not_exist.html')
+    return wrapper
+
+#@login_check
 def ticket_list(request):
-    pass
+    if request.method == 'GET':
+        tc_lists = emailTicket.objects.all()
+        return render(request, 'reservation/ticket_list.html', {'tc_lists': tc_lists})
+    else:
+        form = emailTicketForm()
+    return render(request, 'reservation/rev_start.html', {'form':form})
 
 
 # 예약 후 예약 결과를 Email Ticket 테이블에 저장
@@ -128,13 +145,6 @@ def course_search(request):
     else:
         return render(request, 'reservation/sch_does_not_exist.html')
 
-
-# def course_search(request):
-#     if flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass']).exists():
-#         courses = flightSection.objects.filter(starting_point=request.GET['starting_point'],arrival=request.GET['arrival'],daytogo=request.GET['daytogo'],comingDay=request.GET['comingDay'],SeatClass=request.GET['SeatClass'])
-#         return render(request, 'reservation/course_list.html', {'courses': courses})
-#     else:
-#         return render(request, 'reservation/sch_does_not_exist.html')
 
 
 # 날짜기반 항공권 조회기능

@@ -1,0 +1,15 @@
+{% block content %}
+{% for tc_list in tc_lists %}
+    예약자명  : {{ tc_list.user }}<br/>
+    출발지 : {{ tc_list.starting_point }}<br/>
+    도착지 : {{ tc_list.arrival }}<br/>
+    비행시간 : {{ tc_list.flight_time }}<br/>
+    가는날 : {{ tc_list.daytogo }}<br/>
+    오는날 : {{ tc_list.comingDay }}<br/>
+    가격 : {{ tc_list.Price }}<br/>
+    좌석등급 : {{ tc_list.SeatClass }}
+    <br/>
+    <br/>
+{% endfor %}
+{% endblock %}
+    
