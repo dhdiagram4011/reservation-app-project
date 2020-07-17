@@ -89,6 +89,10 @@ def revstart(request):
     return render(request, 'reservation/rev_start.html', {'form': form})
 
 
+# 예약내역 리스트
+def ticket_list(request):
+    pass
+
 
 # 예약 후 예약 결과를 Email Ticket 테이블에 저장
 def payment(request):

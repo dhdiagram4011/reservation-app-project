@@ -27,3 +27,6 @@ urlpatterns = [
     path('data_save/', include('data_save.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+
+#administrator site page title
+admin.site.site_header = '항공발권시스템관리페이지'
