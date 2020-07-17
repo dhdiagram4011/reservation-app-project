@@ -92,6 +92,3 @@ class emailTicket(models.Model):
     Price = models.ForeignKey('price', on_delete=models.CASCADE, blank=True)
     SeatClass = models.ForeignKey('seatClass', on_delete=models.CASCADE, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    
-
-    

@@ -102,10 +102,22 @@ def login_check(func):
     return wrapper
 
 #@login_check
+# 전체 예약내역 리스트
 def ticket_list(request):
     if request.method == 'GET':
         tc_lists = emailTicket.objects.all()
         return render(request, 'reservation/ticket_list.html', {'tc_lists': tc_lists})
+    else:
+        form = emailTicketForm()
+    return render(request, 'reservation/rev_start.html', {'form':form})
+
+
+def my_tc_list(request):
+    if request.method == 'GET':
+        my_tickets = emailTicket.objects.filter(
+            user=request.GET.get('user','')
+            )
+        return render(request, 'reservation/my_ticket_list.html', {'my_tickets':my_tickets})
     else:
         form = emailTicketForm()
     return render(request, 'reservation/rev_start.html', {'form':form})

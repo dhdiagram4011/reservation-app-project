@@ -60,8 +60,8 @@
     - 항공권 검색결과 조회 : demo.dhdiagram.me/reservation/course_search/ (구현완료)    
     - 출발일 기준 항공권 조회 : demo.dhdiagram.me/reservation/date_search/ (구현완료)
     - 출발일 기준 항공권 조회 결과 : demo.dhdiagram.me/reservation/date_search_result/ (구현완료)
-    - 예약내역 조회 : demo.dhdiagram.me/reservation/ticketing_list/ (구현중 - 90% 완료)
-
+    - 전체 예약내역 조회 : demo.dhdiagram.me/reservation/ticketing_list/ (구현중 - 95% 완료)
+    - 나의 예약내역 조회 : demo.dhdiagram.me/reservation/ticketing_list/ (구현중)
 
 ### Django 버전
     Django == 2.1.5

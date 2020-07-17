@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.urls import path
-from .views import email_ticket, ticket_list, revstart, eticket_resend, index, course_search, payment, date_search_result, date_search, intro, payment
+from .views import email_ticket, ticket_list, my_tc_list, revstart, eticket_resend, index, course_search, payment, date_search_result, date_search, intro, payment
 
 app_name = "reservation"
 
@@ -17,7 +17,6 @@ urlpatterns = [
     path('date_search_result/', date_search_result, name='date_search_result'),  # 날짜별 조회에 따른 결과 출력 페이지
     path('eticket_resend/', eticket_resend, name='eticket_resend'),
     path('email_ticket/', email_ticket, name='email_ticket'),
-    path('ticket_list/', ticket_list, name='ticket_list')
+    path('ticket_list/', ticket_list, name='ticket_list'),
+    path('my_tc_list/', my_tc_list, name='my_tc_list')
 ]
-
-

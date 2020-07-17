@@ -1,0 +1,15 @@
+{% block content %}
+{% for my_ticket in my_tickets %}
+    예약자명  : {{ my_ticket.user }}<br/>
+    출발지 : {{ my_ticket.starting_point }}<br/>
+    도착지 : {{ my_ticket.arrival }}<br/>
+    비행시간 : {{ my_ticket.flight_time }}<br/>
+    가는날 : {{ my_ticket.daytogo }}<br/>
+    오는날 : {{ my_ticket.comingDay }}<br/>
+    가격 : {{ my_ticket.Price }}<br/>
+    좌석등급 : {{ my_ticket.SeatClass }}
+    <br/>
+    <br/>
+{% endfor %}
+{% endblock %}
+    
