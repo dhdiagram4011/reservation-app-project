@@ -94,8 +94,8 @@ def revstart(request):
 #@login_required method
 def login_check(func):
     def wrapper(request):
-        username = request.POST.get('username','')
-        password = request.POST.get('password','')
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
         user = authenticate(username=username, password=password)
         if user is None:
             return render(request, 'authentication/idpw_does_not_exist.html')
