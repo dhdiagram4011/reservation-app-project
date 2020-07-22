@@ -109,8 +109,6 @@
     pip install autopep8
     pip install django==2.1.5
     pip install gunicorn
-    pip install mysqlclient
-    pip install pymysql
     python manage.py makemigrations
     python manage.py migrate 
     systemctl restart ticketapp

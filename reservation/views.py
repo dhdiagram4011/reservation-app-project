@@ -56,6 +56,8 @@ def email_ticket(request):
             flight_time = courses.flight_time,
             daytogo = courses.daytogo,
             comingDay = courses.comingDay,
+            Price = courses.Price,
+            SeatClass = courses.SeatClass,
             user = request.user
         )
         new_ticket.save()
@@ -114,9 +116,10 @@ def ticket_list(request):
 
 def my_tc_list(request):
     if request.method == 'GET':
-        my_tickets = emailTicket.objects.filter(
-            user=request.GET.get('user','')
-            )
+        my_tickets = emailTicket.objects.filter(id=request.GET.get('myticket'))
+        # my_tickets = emailTicket.objects.filter(
+        #     user=request.GET.get('user','')
+        #     )
         return render(request, 'reservation/my_ticket_list.html', {'my_tickets':my_tickets})
     else:
         form = emailTicketForm()

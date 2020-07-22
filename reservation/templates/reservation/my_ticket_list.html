@@ -1,5 +1,6 @@
 {% block content %}
 {% for my_ticket in my_tickets %}
+    번호 : {{ my_ticket.id }}<br/>
     예약자명  : {{ my_ticket.user }}<br/>
     출발지 : {{ my_ticket.starting_point }}<br/>
     도착지 : {{ my_ticket.arrival }}<br/>
