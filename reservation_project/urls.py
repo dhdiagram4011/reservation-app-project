@@ -29,4 +29,4 @@ urlpatterns = [
 
 
 #administrator site page title
-admin.site.site_header = '항공발권시스템관리페이지'
+admin.site.site_header = '항공발권시스템관리페이지(Dev)'
