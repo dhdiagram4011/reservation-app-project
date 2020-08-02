@@ -12,10 +12,8 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: 
-          - python3 ./manage.py migrate,
-          - python3 ./manage.py test
-          name: Test
+          command: python3 ./manage.py test
+          name: ticket-reservation-app-build-test
 
 workflows:
   main:
