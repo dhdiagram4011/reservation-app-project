@@ -12,8 +12,8 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: python3 reservation-app-project/manage.py runserver 0:8000
-          name: reservation-ticket-app-test-build
+          command: python3 /reservation-app-project/manage.py runserver 0:8000
+          name: ticket-reservation-app-build-test
 
 workflows:
   main:
