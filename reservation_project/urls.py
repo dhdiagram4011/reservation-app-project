@@ -25,8 +25,7 @@ urlpatterns = [
     path('reservation/', include('reservation.urls')),
     path('auth/', include('authentication.urls')),
     path('data_save/', include('data_save.urls')),
-    #path('boards/' , include('boardsapi.urls)),
-    path('boards-api/', include('rest_framework.urls')),
+    path('boards/' , include('boardsapi.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

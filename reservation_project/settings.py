@@ -63,8 +63,9 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFUALT_PERMISSION_CLASSES' : [
         'rest_framework.permission.DjangoModelPermissionsOrAndReadOnly'
-    ]
-
+    ],
+    'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 
