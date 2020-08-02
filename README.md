@@ -158,3 +158,18 @@ MIT lisence(dhdiagram@gmail.com)
     3. localhost:8000/boards/comment : 게시글 코멘트
     4. localhost:8000/boards/likedislike : 코멘트에 대한 좋아요/싫어요 표시
 
+
+### API LIST
+    1. 게시판 목록(R)
+    2. 게시판 글 목록(R)
+    3. 게시판 글 상세목록(R)
+    4. 게시판 글쓰기(C)
+    5. 게시판 글 상세(R)
+    6. 코멘트 리스트(R)
+    7. 코멘트 작성(C)
+    8. 코멘트 삭제(D)
+    9. 코멘트 수정(U)
+    10.게시글 수정(U)
+    11.게시글 삭제(D)
+    12.좋아요/싫어요(C/U/D)
+
