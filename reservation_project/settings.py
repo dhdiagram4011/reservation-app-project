@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'reservation',
     'authentication',
     'data_save',
+    'boardsapi',
+    'rest_framework',
 ]
 
 
@@ -56,6 +58,14 @@ INSTALLED_APPS = [
 #     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 #     'django.middleware.cache.FetchFromCacheMiddleware',
 # ]
+
+
+REST_FRAMEWORK = {
+    'DEFUALT_PERMISSION_CLASSES' : [
+        'rest_framework.permission.DjangoModelPermissionsOrAndReadOnly'
+    ]
+
+}
 
 
 MIDDLEWARE = [
