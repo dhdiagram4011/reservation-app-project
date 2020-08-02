@@ -17,6 +17,11 @@ class BoardPostsViewsets(viewsets.ModelViewSet):
     serializer_class = BoardPostsSerializer
 
 
+class BoardDetailsViewsets(viewsets.ModelViewSet):
+    queryset = BoardPosts.objects.filter().values('id')
+    serializer_class = BoardPostsSerializer  
+
+
 class CommentViewsets(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer

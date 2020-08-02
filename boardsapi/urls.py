@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 
 router.register(r'board', views.BoardViewsets)
 router.register(r'boardposts', views.BoardPostsViewsets)
+router.register(r'boardDetail/<int:id>/', views.BoardDetailsViewsets)
 router.register(r'comment', views.CommentViewsets)
 router.register(r'likedislike', views.likeDislikeViewsets)
 

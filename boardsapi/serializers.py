@@ -16,6 +16,12 @@ class BoardPostsSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['writer','title','document','created_date']
 
 
+class BoardDetailsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = BoardPosts
+        fields = ['writer','title','document','created_date']
+
+
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
