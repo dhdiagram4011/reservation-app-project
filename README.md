@@ -143,3 +143,18 @@ MIT lisence(dhdiagram@gmail.com)
     Email : dhdiagram@gmail.com
     DemoSite : ing ... 
 
+
+# [TOY]게시판 API 
+
+
+### 프로젝트(어플리케이션 구성)
+    - djangorestframework
+    - python3.8
+
+
+### URI
+    1. localhost:8000/boards/board : 게시판 목록
+    2. localhost:8000/boards/boardposts : 해당 게시판 글 
+    3. localhost:8000/boards/comment : 게시글 코멘트
+    4. localhost:8000/boards/likedislike : 코멘트에 대한 좋아요/싫어요 표시
+
