@@ -1,4 +1,5 @@
-from django.contrib.auth.models import Board, BoardPosts, Comment, likeDislike
+#from django.contrib.auth.models import Board, BoardPosts, Comment, likeDislike
+from .models import Board, BoardPosts, Comment, likeDislike
 from rest_framework import routers, serializers
 
 
