@@ -17,7 +17,7 @@ class BoardPosts(models.Model):
     title = models.CharField(max_length=10)
     document = models.TextField(max_length=1000)
     created_date = models.DateTimeField(auto_now_add=True)
-    boardtitle = models.ForeignKey('Board', related_name='boardposts', on_delete=models.CASCADE)
+    boardtitle = models.ForeignKey('Board', related_name='BoardPosts', on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
@@ -25,7 +25,7 @@ class Comment(models.Model):
     writer = models.CharField(max_length=10)
     document = models.CharField(max_length=1000)
     created_date = models.DateTimeField(auto_now=True)
-    title = models.ForeignKey('BoardPosts', related_name='BoardPosts', on_delete=models.CASCADE)
+    title = models.ForeignKey('BoardPosts', related_name='Board', on_delete=models.CASCADE)
 
 
 class likeDislike(models.Model):
