@@ -8,8 +8,10 @@ TEND = (
 )
 
 
-class Board(models.Model): #게시판리스트
+class Board(models.Model):
+    writer = models.CharField(max_length=10)
     title = models.CharField(max_length=100)
+    explanation = models.TextField(max_length=1000)
 
 
 class BoardPosts(models.Model):
@@ -17,7 +19,6 @@ class BoardPosts(models.Model):
     title = models.CharField(max_length=10)
     document = models.TextField(max_length=1000)
     created_date = models.DateTimeField(auto_now_add=True)
-    boardtitle = models.ForeignKey('Board', related_name='Board', on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
@@ -25,12 +26,12 @@ class Comment(models.Model):
     writer = models.CharField(max_length=10)
     document = models.CharField(max_length=1000)
     created_date = models.DateTimeField(auto_now=True)
-    title = models.ForeignKey('BoardPosts', on_delete=models.CASCADE)
+    boardPost = models.ForeignKey('BoardPosts', on_delete=models.CASCADE)
 
 
 class likeDislike(models.Model):
     writer = models.CharField(max_length=10)
     created_date = models.DateTimeField(auto_now=True)
-    #comment = models.ForeignKey('BoardPosts', related_name='writer', on_delete=models.CASCADE) #댓글
-    #posts = models.ForeignKey('BoardPosts', related_name='writer', on_delete=models.CASCADE)  #게시글
+    comment = models.ForeignKey('Comment', on_delete=models.CASCADE) #댓글
+    posts = models.ForeignKey('BoardPosts', on_delete=models.CASCADE)  #게시글
     tendency = models.CharField(max_length=5, choices=TEND, default='좋아요/싫어요', null=True)   #좋아요,싫어요

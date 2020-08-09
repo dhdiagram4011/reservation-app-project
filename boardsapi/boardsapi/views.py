@@ -7,34 +7,26 @@ from boardsapi.serializers import BoardSerializer, BoardPostsSerializer, Comment
 ## serializer = object to xml,json parse
 
 
-class BoardViewsets(viewsets.ModelViewSet): #전체 글 보기
+class BoardViewsets(viewsets.ModelViewSet):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
 
 
-class BoardPostsViewsets(viewsets.ModelViewSet): #글쓰기
+class BoardPostsViewsets(viewsets.ModelViewSet):
     queryset = BoardPosts.objects.all()
     serializer_class = BoardPostsSerializer
 
 
-##전체 글 보기
-class BoardPostsAllViewsets(viewsets.ModelViewSet):
-    queryset = BoardPosts.objects.all()
-    serializers_class = BoardPostsSerializer
-
-
-
-class BoardDetailsViewsets(viewsets.ModelViewSet): #글 상세보기
+class BoardDetailsViewsets(viewsets.ModelViewSet):
     queryset = BoardPosts.objects.filter().values('id')
     serializer_class = BoardPostsSerializer  
 
 
-class CommentViewsets(viewsets.ModelViewSet): #코멘트 달기
+class CommentViewsets(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
-    #queryset = BoardPosts.objects.all()
     serializer_class = CommentSerializer
 
 
-class likeDislikeViewsets(viewsets.ModelViewSet): #좋아요/싫어요
+class likeDislikeViewsets(viewsets.ModelViewSet):
     queryset = likeDislike.objects.all()
     serializer_class = likeDislikeSerializer

@@ -7,23 +7,13 @@ from rest_framework import routers, serializers
 class BoardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Board
-        fields = ['title']
+        fields = ['writer','title','explanation']
 
 
 class BoardPostsSerializer(serializers.HyperlinkedModelSerializer):
-    boardtitle = serializers.StringRelatedField(many=True)
-
-    class Meta:
-        model = BoardPosts
-        fields = ['writer','title','document','created_date','boardtitle']
-
-
-class BoardPostsAllSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BoardPosts
         fields = ['writer','title','document','created_date']
-        read_only_fields = ['writer','title','document','created_date']
-
 
 
 class BoardDetailsSerializer(serializers.HyperlinkedModelSerializer):
@@ -33,11 +23,9 @@ class BoardDetailsSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
-    ###title = serializers.StringRelatedField(many=True)
-    
     class Meta:
         model = Comment
-        fields = ['parentComments','writer','title','document','boardposts']
+        fields = ['parentComments','writer','document','created_date','boardPost']
 
 
 class likeDislikeSerializer(serializers.HyperlinkedModelSerializer):

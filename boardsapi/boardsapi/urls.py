@@ -6,11 +6,9 @@ app_name = "boardsapi"
 
 router = routers.DefaultRouter()
 
-#boards/
 router.register(r'board', views.BoardViewsets)
 router.register(r'boardposts', views.BoardPostsViewsets)
-router.register(r'boardpostsAll', views.BoardPostsAllViewsets)
-router.register(r'boardDetail', views.BoardDetailsViewsets)
+router.register(r'boardDetail/<int:id>/', views.BoardDetailsViewsets)
 router.register(r'comment', views.CommentViewsets)
 router.register(r'likedislike', views.likeDislikeViewsets)
 
