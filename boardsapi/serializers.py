@@ -1,21 +1,23 @@
 #from django.contrib.auth.models import Board, BoardPosts, Comment, likeDislike
-from .models import Board, BoardPosts, Comment, likeDislike
+from .models import BoardPosts, Comment, likeDislike
 from rest_framework import routers, serializers
 
 
 
-class BoardSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Board
-        fields = ['title']
+# class BoardSerializer(serializers.HyperlinkedModelSerializer):
+#     #title = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
+#     class Meta:
+#         model = Boardman
+#         fields = ['board_name','board_title','board_maker']
 
 
-class BoardPostsSerializer(serializers.HyperlinkedModelSerializer):
-    boardtitle = serializers.StringRelatedField(many=True)
+class BoardPostsSerializer(serializers.ModelSerializer):
+#    boardtitle = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = BoardPosts
-        fields = ['writer','title','document','created_date','boardtitle']
+        fields = ['writer','title','document','created_date']
 
 
 class BoardPostsAllSerializer(serializers.HyperlinkedModelSerializer):
@@ -33,11 +35,12 @@ class BoardDetailsSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
-    ###title = serializers.StringRelatedField(many=True)
+    title = serializers.StringRelatedField(many=True)
     
     class Meta:
         model = Comment
-        fields = ['parentComments','writer','title','document','boardposts']
+        fields = ['parentComments','writer','document','title']
+
 
 
 class likeDislikeSerializer(serializers.HyperlinkedModelSerializer):

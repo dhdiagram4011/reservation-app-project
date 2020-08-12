@@ -8,8 +8,10 @@ TEND = (
 )
 
 
-class Board(models.Model): #게시판리스트
-    title = models.CharField(max_length=100)
+# class Boardman(models.Model): #게시판리스트
+#     board_name = models.CharField(max_length=1000)
+#     board_title = models.CharField(max_length=100)
+#     board_maker = models.CharField(max_length=10)
 
 
 class BoardPosts(models.Model):
@@ -17,7 +19,10 @@ class BoardPosts(models.Model):
     title = models.CharField(max_length=10)
     document = models.TextField(max_length=1000)
     created_date = models.DateTimeField(auto_now_add=True)
-    boardtitle = models.ForeignKey('Board', related_name='Board', on_delete=models.CASCADE)
+    # boardtitle = models.ForeignKey('Boardman', related_name='board_title', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
 
 
 class Comment(models.Model):
@@ -25,7 +30,7 @@ class Comment(models.Model):
     writer = models.CharField(max_length=10)
     document = models.CharField(max_length=1000)
     created_date = models.DateTimeField(auto_now=True)
-    title = models.ForeignKey('BoardPosts', related_name='Board', on_delete=models.CASCADE)
+    titles = models.ForeignKey('BoardPosts', related_name='title', on_delete=models.CASCADE)
 
 
 class likeDislike(models.Model):
