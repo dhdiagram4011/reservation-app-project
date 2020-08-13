@@ -13,7 +13,6 @@ class BoardSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class BoardPostsSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = BoardPosts
         fields = ['writer','title','document','boardtitle','created_date']
@@ -34,12 +33,11 @@ class BoardDetailsSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
-    title = serializers.StringRelatedField(many=True)
+    #target_post = serializers.StringRelatedField(many=True)
     
     class Meta:
         model = Comment
-        fields = ['parentComments','writer','document','title']
-
+        fields = ['writer','document','created_date','target_post']
 
 
 class likeDislikeSerializer(serializers.HyperlinkedModelSerializer):

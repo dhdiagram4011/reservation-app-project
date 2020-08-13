@@ -29,17 +29,19 @@ class BoardPosts(models.Model):
 
 
 class Comment(models.Model):
-    parentComments = models.TextField(max_length=500)
+    #parentComments = models.TextField(max_length=500)
     writer = models.CharField(max_length=10)
     document = models.CharField(max_length=1000)
     created_date = models.DateTimeField(auto_now=True)
     target_post = models.ForeignKey('BoardPosts', related_name='posttitle', on_delete=models.CASCADE)
 
-    
+    def __str__(self):
+        return self.target_post
 
-class likeDislike(models.Model):
+
+class likeDislike(models.Model): #게시글과 코멘트에 좋아요/싫어요 표시
     writer = models.CharField(max_length=10)
     created_date = models.DateTimeField(auto_now=True)
-    #comment = models.ForeignKey('BoardPosts', related_name='writer', on_delete=models.CASCADE) #댓글
-    #posts = models.ForeignKey('BoardPosts', related_name='writer', on_delete=models.CASCADE)  #게시글
+    comment = models.ForeignKey('Comment', related_name='post_comment', on_delete=models.CASCADE) #댓글
+    posts = models.ForeignKey('BoardPosts', related_name='select_post', on_delete=models.CASCADE)  #게시글
     tendency = models.CharField(max_length=10, choices=TEND, default='좋아요/싫어요', null=True)   #좋아요,싫어요
