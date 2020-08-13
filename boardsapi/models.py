@@ -8,10 +8,13 @@ TEND = (
 )
 
 
-# class Boardman(models.Model): #게시판리스트
-#     board_name = models.CharField(max_length=1000)
-#     board_title = models.CharField(max_length=100)
-#     board_maker = models.CharField(max_length=10)
+class Boardman(models.Model): #게시판리스트
+    board_name = models.CharField(max_length=1000)
+    board_title = models.CharField(max_length=100)
+    board_maker = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.board_title
 
 
 class BoardPosts(models.Model):
@@ -19,10 +22,10 @@ class BoardPosts(models.Model):
     title = models.CharField(max_length=10)
     document = models.TextField(max_length=1000)
     created_date = models.DateTimeField(auto_now_add=True)
-    # boardtitle = models.ForeignKey('Boardman', related_name='board_title', on_delete=models.CASCADE)
+    boardtitle = models.ForeignKey('Boardman', related_name='post', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.boardtitle
 
 
 class Comment(models.Model):
@@ -30,12 +33,13 @@ class Comment(models.Model):
     writer = models.CharField(max_length=10)
     document = models.CharField(max_length=1000)
     created_date = models.DateTimeField(auto_now=True)
-    titles = models.ForeignKey('BoardPosts', related_name='title', on_delete=models.CASCADE)
+    target_post = models.ForeignKey('BoardPosts', related_name='posttitle', on_delete=models.CASCADE)
 
+    
 
 class likeDislike(models.Model):
     writer = models.CharField(max_length=10)
     created_date = models.DateTimeField(auto_now=True)
     #comment = models.ForeignKey('BoardPosts', related_name='writer', on_delete=models.CASCADE) #댓글
     #posts = models.ForeignKey('BoardPosts', related_name='writer', on_delete=models.CASCADE)  #게시글
-    tendency = models.CharField(max_length=5, choices=TEND, default='좋아요/싫어요', null=True)   #좋아요,싫어요
+    tendency = models.CharField(max_length=10, choices=TEND, default='좋아요/싫어요', null=True)   #좋아요,싫어요

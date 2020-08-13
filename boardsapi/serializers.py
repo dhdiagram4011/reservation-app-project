@@ -1,23 +1,22 @@
 #from django.contrib.auth.models import Board, BoardPosts, Comment, likeDislike
-from .models import BoardPosts, Comment, likeDislike
+from .models import BoardPosts, Comment, likeDislike, Boardman
 from rest_framework import routers, serializers
 
 
 
-# class BoardSerializer(serializers.HyperlinkedModelSerializer):
-#     #title = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+class BoardSerializer(serializers.HyperlinkedModelSerializer):
+    #title = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
-#     class Meta:
-#         model = Boardman
-#         fields = ['board_name','board_title','board_maker']
+    class Meta:
+        model = Boardman
+        fields = ['board_name','board_title','board_maker']
 
 
 class BoardPostsSerializer(serializers.ModelSerializer):
-#    boardtitle = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = BoardPosts
-        fields = ['writer','title','document','created_date']
+        fields = ['writer','title','document','boardtitle','created_date']
 
 
 class BoardPostsAllSerializer(serializers.HyperlinkedModelSerializer):
