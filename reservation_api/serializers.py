@@ -1,43 +1,47 @@
 from .models import flightSection, flightNumber, flightAircraft, seatClass, price
+from authentication.models import MyUser
+from reservation.models import emailTicket
 from rest_framework import routers, serializers
 
 
-class flightSectionSerializer(serializers.HyperlinkedModelSerializer):
+
+class emailTicketSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = emailTicket
+        fields = ['starting_point','arrival','flight_time','daytogo','comingDay','Price','SeatClass','user']
+        
+
+class MyUserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = ['koreanLastname','koreanFirstname','englishLastname','englishFirstname','address','email','password','detailAddress','phoneNumber'] 
+
     
+class flightSectionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = flightSection
         fields = ['starting_porint','arrival','flight_time','daytogo','comingDay','created_date','SeatClass','FlightNumber','FlightAircraft','Price']
 
 
 class flightNumberSerializer(serializers.HyperlinkedModelSerializer):
-
     class Meta:
         model = flightNumber
         fields = ['number']
 
-class flightAircraftSerializer(serializers.HyperlinkedModelSerializer):
-    
+
+class flightAircraftSerializer(serializers.HyperlinkedModelSerializer):    
     class Meta:
         model = flightNumber
         fields = ['aircraft_name','aircraft_number']
 
 
-
-class seatClassSerializer(serializers,HyperlinkedModelSerializer):
-    
+class seatClassSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = seatClass
         fields = ['ranking']
 
 
-
-
-class price(models.Model): # 티켓가격
-    peak_season_price = models.DecimalField(decimal_places=2, max_digits=8)
-    low_season_price = models.DecimalField(decimal_places=2, max_digits=8)
-
-    def __str__(self):
-        return str(self.peak_season_price)
-
-    def __str__(self):
-        return str(self.low_season_price)
+class priceSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = price
+        fields = ['peak_season_price','low_season_price']
