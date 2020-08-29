@@ -20,7 +20,7 @@ class MyUserSerializer(serializers.HyperlinkedModelSerializer):
 class flightSectionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = flightSection
-        fields = ['starting_porint','arrival','flight_time','daytogo','comingDay','created_date','SeatClass','FlightNumber','FlightAircraft','Price']
+        fields = ['starting_point','arrival','flight_time','daytogo','comingDay','SeatClass','FlightNumber','FlightAircraft','Price']
 
 
 class flightNumberSerializer(serializers.HyperlinkedModelSerializer):

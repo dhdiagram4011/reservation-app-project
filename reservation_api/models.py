@@ -11,10 +11,10 @@ class flightSection(models.Model): # 운항구간
     daytogo = models.DateField()
     comingDay = models.DateField()
     created_date = models.DateTimeField(default=timezone.now())
-    SeatClass = models.ForeignKey('seatClass', on_delete=models.CASCADE)
-    FlightNumber = models.ForeignKey('flightNumber', on_delete=models.CASCADE)
-    FlightAircraft = models.ForeignKey('flightAircraft', on_delete=models.CASCADE)
-    Price = models.ForeignKey('price', on_delete=models.CASCADE)
+    SeatClass = models.ForeignKey('seatClass', related_name='seat', on_delete=models.CASCADE)
+    FlightNumber = models.ForeignKey('flightNumber', related_name='flight', on_delete=models.CASCADE)
+    FlightAircraft = models.ForeignKey('flightAircraft', related_name='aircraft', on_delete=models.CASCADE)
+    Price = models.ForeignKey('price', related_name='cost', on_delete=models.CASCADE)
 
 
 class flightNumber(models.Model): #비행기 번호
@@ -44,9 +44,9 @@ class seatClass(models.Model):  #좌석 - 일반석 또는 프레스티지석
 
 
 class price(models.Model): # 티켓가격
-    peak_season_price = models.DecimalField(decimal_places=2, max_digits=8)
-    low_season_price = models.DecimalField(decimal_places=2, max_digits=8)
-
+    peak_season_price = models.ForeignKey(flightSection, related_name='cost1', on_delete=True)
+    low_season_price = models.ForeignKey(flightSection, related_name='cost2', on_delete=True)
+    
     def __str__(self):
         return str(self.peak_season_price)
 
