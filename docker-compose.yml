@@ -32,7 +32,6 @@ services:
         systemctl start appdev
         yum repolist ; yum clean all
         yum install -y nginx
-        ln -s /etc/nginx/sites-available/django-test /etc/nginx/sites-enabled
         systemctl enable nginx
         systemctl start nginx
        
