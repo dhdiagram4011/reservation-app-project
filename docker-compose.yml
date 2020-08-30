@@ -15,7 +15,6 @@ services:
   #     - POSTGRES_INITDB_ARGS=--encoding=UTF-8
 
   django:
-    privileged: true
     build:
       context: .
       dockerfile: ./Dockerfile-DEV
@@ -36,6 +35,7 @@ services:
         systemctl start nginx
        
     restart: always
+    privileged: true
     volumes:
       - ./:/app/
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
