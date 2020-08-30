@@ -29,7 +29,8 @@ services:
         pip3 install gunicorn
         systemctl enable appdev
         systemctl start appdev
-        yum install -y ngxin
+        yum install -y nginx
+        ln -s /etc/nginx/sites-available/django-test /etc/nginx/sites-enabled
         systemctl enable nginx
         systemctl start nginx
        
