@@ -26,10 +26,13 @@ services:
       - bash
       - -c
       - |
-        python3 manage.py makemigrations
-        python3 manage.py migrate
-        nohup python3 manage.py runserver 0:8000 &
-        echo '\r'
+        pip3 install gunicorn
+        systemctl enable appdev
+        systemctl start appdev
+        yum install -y ngxin
+        systemctl enable nginx
+        systemctl start nginx
+       
     restart: always
     volumes:
       - ./:/app/

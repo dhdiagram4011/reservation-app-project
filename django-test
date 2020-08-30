@@ -1,0 +1,15 @@
+server {
+        listen 80;
+        server_name 18.183.87.224;
+
+        location = /favicon.ico { access_log off; log_not_found off; }
+
+        location /static/ {
+                root /app/reservation-app-project;
+        }
+
+        location / {
+                include proxy_params;
+                proxy_pass http://unix://app/reservation-app-project/gunicorn.sock;
+        }
+}

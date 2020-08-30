@@ -1,13 +1,14 @@
-FROM python:3
+FROM centos:7
 
 ENV PYTHONUNBUFFERED 0
 
-RUN apt-get update && apt-get -y install \
-    libpq-dev
+RUN yum update && yum install -y libpq-dev python3-pip python3
 
 WORKDIR /app
 
+ADD    appdev.service      /etc/systemd/system/
+ADD    django-test         /etc/nginx/sites-available/
 ADD    requirements.txt    /app/
-RUN    pip install -r requirements.txt
-RUN    pip install Django==2.1.5
-RUN    pip install djangorestframework
+RUN    pip3 install -r requirements.txt
+RUN    pip3 install Django==2.1.5
+RUN    pip3 install djangorestframework
