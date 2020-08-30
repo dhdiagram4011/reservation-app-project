@@ -38,4 +38,4 @@ services:
     restart: always
     volumes:
       - ./:/app/
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup
