@@ -2,7 +2,7 @@ FROM centos
 
 ENV PYTHONUNBUFFERED 0
 
-RUN yum update -y && yum install -y libpq-dev python3-pip python3
+RUN yum update -y && yum install -y python3-pip python3
 
 WORKDIR /app
 
