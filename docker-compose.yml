@@ -6,9 +6,14 @@ volumes:
 services:
   app:
     image: centos/7
-    privileged : true
-
+    privileged: true
+    volumes:
+      - /sys/fs/cgroups:/sys/fs/cgroups:ro
+    environment:
+      - "--privileged"
+      
   django:
+    privileged: true
     build:
       context: .
       dockerfile: ./Dockerfile-DEV
