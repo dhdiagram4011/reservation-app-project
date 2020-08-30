@@ -1,4 +1,4 @@
-FROM arm64v8/centos
+FROM centos
 
 ENV PYTHONUNBUFFERED 0
 
