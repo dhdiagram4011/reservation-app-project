@@ -1,5 +1,6 @@
-from django.shortcuts import render, request, Response
+from django.shortcuts import render
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from . import views
 from .models import flightNumber, flightSection, flightAircraft, seatClass, price
 from authentication.models import MyUser #회원가입
@@ -44,9 +45,9 @@ class seatClassViewsets(viewsets.ModelViewSet):
     serializer_class = seatClassSerializer
 
     @api_view(['DELETE'])
-    def seatClassDelete(self, reuqest):
+    def seatClassDelete(request, ranking):
         if request.method == 'DELETE':
-            seatClass.objects.delete()
+            seatClass.delete()
             return Response({'message':'seatClass list is delete complete'})
 
 
