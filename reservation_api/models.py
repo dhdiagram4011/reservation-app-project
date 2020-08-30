@@ -37,7 +37,7 @@ class flightAircraft(models.Model): #항공기 기종
 
 
 class seatClass(models.Model):  #좌석 - 일반석 또는 프레스티지석
-    ranking = models.CharField(max_length=10)
+    ranking = models.CharField(max_length=10, null=False)
 
     def __str__(self):
         return self.ranking

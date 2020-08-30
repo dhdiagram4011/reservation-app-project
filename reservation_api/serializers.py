@@ -41,6 +41,18 @@ class seatClassSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['ranking']
 
 
+class seatClassDelSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = seatClass
+        fields = ['ranking']
+
+
+class seatClassDeleteSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = seatClass
+        fields = ['ranking']
+
+
 class priceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = price

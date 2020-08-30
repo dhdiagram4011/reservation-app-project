@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, request, Response
+from rest_framework.views import APIView
+from . import views
 from .models import flightNumber, flightSection, flightAircraft, seatClass, price
 from authentication.models import MyUser #회원가입
 from reservation.models import emailTicket #예약내역 조회
@@ -6,7 +8,9 @@ from reservation.models import emailTicket #예약내역 조회
 from rest_framework import viewsets
 from rest_framework import permissions
 
-from reservation_api.serializers import flightSectionSerializer, flightNumberSerializer, flightAircraftSerializer,seatClassSerializer, priceSerializer, MyUserSerializer,emailTicketSerializer
+from reservation_api.serializers import flightSectionSerializer, flightNumberSerializer, flightAircraftSerializer,seatClassSerializer, priceSerializer, MyUserSerializer,emailTicketSerializer,seatClassDeleteSerializer
+
+from rest_framework.generics import DestroyAPIView
 
 
 class RevSearchViewsets(viewsets.ModelViewSet): #회원별 예약내역 조회
@@ -34,11 +38,25 @@ class flightAircraftViewsets(viewsets.ModelViewSet):
     serializer_class = flightAircraftSerializer
 
 
+
 class seatClassViewsets(viewsets.ModelViewSet):
     queryset = seatClass.objects.all()
     serializer_class = seatClassSerializer
 
+    @api_view(['DELETE'])
+    def seatClassDelete(self, reuqest):
+        if request.method == 'DELETE':
+            seatClass.objects.delete()
+            return Response({'message':'seatClass list is delete complete'})
+
+
+# class seatClassDeleteViewsets(DestroyAPIView):
+#     queryset = seatClass.objects.all()
+#     serializer_class = seatClassDeleteSerializer
+
+
+
   
 class priceViewsets(viewsets.ModelViewSet):
     queryset = price.objects.all()
-    serializer_class = priceSerializer 
+    serializer_class = priceSerializer
