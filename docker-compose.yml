@@ -29,7 +29,7 @@ services:
         python3 manage.py makemigrations
         python3 manage.py migrate
         nohup python3 manage.py runserver 0:8000 &
-        echo -e '\r'
+        echo '\r'
     restart: always
     volumes:
       - ./:/app/
