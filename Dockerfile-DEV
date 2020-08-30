@@ -14,6 +14,3 @@ ADD    requirements.txt    /app/
 RUN    pip3 install -r requirements.txt
 RUN    pip3 install Django==2.1.5
 RUN    pip3 install djangorestframework
-
-VOLUME [ "/sys/fs/cgroup" ]
-CMD ["/usr/sbin/init"]
