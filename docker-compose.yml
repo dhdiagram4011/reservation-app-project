@@ -9,7 +9,6 @@ services:
     privileged : true
 
   django:
-    privileged: true
     build:
       context: .
       dockerfile: ./Dockerfile-DEV
