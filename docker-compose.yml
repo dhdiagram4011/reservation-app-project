@@ -4,15 +4,9 @@ volumes:
   django_sample_db_dev: {}
 
 services:
-  # db:
-  #   image: postgres
-  #   volumes:
-  #     - django_sample_db_dev:/var/lib/postgresql/data
-  #   environment:
-  #     - POSTGRES_DB=sampledb
-  #     - POSTGRES_USER=sampleuser
-  #     - POSTGRES_PASSWORD=samplesecret
-  #     - POSTGRES_INITDB_ARGS=--encoding=UTF-8
+  app:
+    image: centos/7
+    privileged : true
 
   django:
     privileged: true
