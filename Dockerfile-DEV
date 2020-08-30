@@ -1,6 +1,5 @@
 FROM centos:7
 
-ENV PYTHONUNBUFFERED 0
 ENV container docker
 
 RUN yum update -y && yum install -y python3-pip python3
