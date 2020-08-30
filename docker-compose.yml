@@ -25,6 +25,7 @@ services:
     command:
       - bash
       - -c
+      - --privileged
       - |
         pip3 install gunicorn
         systemctl enable appdev
