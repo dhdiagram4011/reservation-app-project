@@ -10,12 +10,12 @@ router = routers.DefaultRouter()
 router.register(r'schedule_adding' , views.ScheduleAddViewsets) #운항스케쥴 추가
 router.register(r'register' , views.registerViewsets) #회원가입
 router.register(r'priceadd' , views.priceViewsets) #가격추가
-router.register(r'seatadd', views.seatClassViewsets) #좌석추가
+router.register(r'seat', views.seatClassViewsets) #좌석추가
 
-#router.register(r'seatdelete', views.seatClassViewsets) #좌석삭제
 
 urlpatterns = [
     path('', include(router.urls)),
     path('reservation-api/', include('rest_framework.urls')),
-    path('seatdelete/', views.seatClass_update_and_delete)
+    path('seatdelete/<int:id>/', views.seatClass_update_and_delete),
+    #path('pricedelete/', views.price_update_and_delete),
 ]

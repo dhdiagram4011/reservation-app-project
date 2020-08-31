@@ -14,6 +14,8 @@ from reservation_api.serializers import flightSectionSerializer, flightNumberSer
 from rest_framework.generics import DestroyAPIView
 from .serializers import seatClassSerializer
 
+from rest_framework.response import Response
+
 class RevSearchViewsets(viewsets.ModelViewSet): #회원별 예약내역 조회
     queryset = emailTicket.objects.all()
     serializer_class = emailTicketSerializer
@@ -46,19 +48,36 @@ class seatClassViewsets(viewsets.ModelViewSet):
 
     ## PUT : 데이터 수정 / DELETE : 데이터 삭제
 
-@api_view(['PUT','DELETE'])
-def seatClass_update_and_delete(request):
-    seatClass = get_object_or_404(seatClass)
-    if request.method == 'PUT':
-        serializer = seatClassSerializer(data=request.data, instance=seatClass)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response({'message':'seatClass list is update complete'})
-    else:
-        seatClass.delete()
-        return Response({'messages':'seatClass list is delete complete!'})
-
 
 class priceViewsets(viewsets.ModelViewSet):
     queryset = price.objects.all()
     serializer_class = priceSerializer
+
+
+@api_view(['PUT','DELETE'])
+def seatClass_update_and_delete(request, id):
+    SeatClass = get_object_or_404(seatClass, id=id)
+    if request.method == 'PUT':
+        serializer = seatClassSerializer(data=request.data, instance=SeatClass)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'message':'seatClass list is update complete'})
+    else:
+        SeatClass.delete()
+        return Response({'messages':'seatClass list is delete complete!'})
+
+
+# @api_view(['PUT','DELETE'])
+# def price_update_and_delete(request):
+#     price = get_object_or_404(price)
+#     if request.method == 'PUT':
+#         serializer = priceSerializer(data=request.data, instance=price)
+#         if serializer.is_valid(raise_exception=True):
+#             serializer.save()
+#             return Response({'message':'price list is update complete'})
+#     else:
+#         price.delete()
+#         return Response({'messages':'price list is delete complete!'})
+
+
+
