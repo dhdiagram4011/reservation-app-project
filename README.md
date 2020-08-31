@@ -144,7 +144,7 @@ MIT lisence(dhdiagram@gmail.com)
     DemoSite : ing ... 
 
 
-# [TOY]게시판 API 
+# [TOY]항공발권시스템 API 
 
 
 ### 프로젝트(어플리케이션 구성)
@@ -152,24 +152,10 @@ MIT lisence(dhdiagram@gmail.com)
     - python3.8
 
 
-### URI
-    1. localhost:8000/boards/board : 게시판 목록
-    2. localhost:8000/boards/boardposts : 해당 게시판 글 
-    3. localhost:8000/boards/comment : 게시글 코멘트
-    4. localhost:8000/boards/likedislike : 코멘트에 대한 좋아요/싫어요 표시
-
-
-### API LIST
-    1. 게시판 목록(R)
-    2. 게시판 글 목록(R)
-    3. 게시판 글 상세목록(R)
-    4. 게시판 글쓰기(C)
-    5. 게시판 글 상세(R)
-    6. 코멘트 리스트(R)
-    7. 코멘트 작성(C)
-    8. 코멘트 삭제(D)
-    9. 코멘트 수정(U)
-    10.게시글 수정(U)
-    11.게시글 삭제(D)
-    12.좋아요/싫어요(C/U/D)
+### URI 및 API 리스트
+    1. localhost:8000/revapi/seatmodify/{id} : 좌석 리스트 삭제 및 수정
+    2. localhost:8000/revapi/schedulemodify/{id} : 운항스케쥴 리스트 삭제 및 수정
+    3. localhost:8000/revapi/schedule_adding : 운항스케줄 추가
+    4. localhost:8000/revapi/register : 회원가입
+    5. localhost:8000/revapi/seat : 좌석 리스트 추가  
 
