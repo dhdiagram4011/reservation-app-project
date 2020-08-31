@@ -16,6 +16,7 @@ router.register(r'seat', views.seatClassViewsets) #좌석추가
 urlpatterns = [
     path('', include(router.urls)),
     path('reservation-api/', include('rest_framework.urls')),
-    path('seatdelete/<int:id>/', views.seatClass_update_and_delete),
+    path('seatmodify/<int:id>/', views.seatClass_update_and_delete),  #좌석수정/삭제 API
+    path('schedulemodify/<int:id>/', views.schedule_update_and_delete),  #운항스케쥴 수정/삭제 API
     #path('pricedelete/', views.price_update_and_delete),
 ]

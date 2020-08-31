@@ -11,10 +11,10 @@ class flightSection(models.Model): # 운항구간
     daytogo = models.DateField()
     comingDay = models.DateField()
     created_date = models.DateTimeField(default=timezone.now())
-    SeatClass = models.ForeignKey('seatClass', related_name='seat', on_delete=models.CASCADE)
-    FlightNumber = models.ForeignKey('flightNumber', related_name='flight', on_delete=models.CASCADE)
-    FlightAircraft = models.ForeignKey('flightAircraft', related_name='aircraft', on_delete=models.CASCADE)
-    Price = models.ForeignKey('price', related_name='cost', on_delete=models.CASCADE)
+    # SeatClass = models.ForeignKey('seatClass', related_name='seat', on_delete=models.CASCADE)
+    # FlightNumber = models.ForeignKey('flightNumber', related_name='flight', on_delete=models.CASCADE)
+    # FlightAircraft = models.ForeignKey('flightAircraft', related_name='aircraft', on_delete=models.CASCADE)
+    # Price = models.ForeignKey('price', related_name='cost', on_delete=models.CASCADE)
 
 
 class flightNumber(models.Model): #비행기 번호

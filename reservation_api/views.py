@@ -67,17 +67,15 @@ def seatClass_update_and_delete(request, id):
         return Response({'messages':'seatClass list is delete complete!'})
 
 
-# @api_view(['PUT','DELETE'])
-# def price_update_and_delete(request):
-#     price = get_object_or_404(price)
-#     if request.method == 'PUT':
-#         serializer = priceSerializer(data=request.data, instance=price)
-#         if serializer.is_valid(raise_exception=True):
-#             serializer.save()
-#             return Response({'message':'price list is update complete'})
-#     else:
-#         price.delete()
-#         return Response({'messages':'price list is delete complete!'})
 
-
-
+@api_view(['PUT','DELETE'])
+def schedule_update_and_delete(request, id):
+    FlightSection = get_object_or_404(flightSection, id=id)
+    if request.method == 'PUT':
+        serializer = flightSectionSerializer(data=request.data, instance=FlightSection)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'messages':'운항구간 및 스케쥴이 정상적으로 수정되었습니다'})
+    else:
+        FlightSection.delete()
+        return Response({'messages':'운항구간 삭제가 완료되었습니다'})
