@@ -1,0 +1,6 @@
+artifacts:
+  files:
+    - '**/*'
+  base-directory: /app
+  name: apiapp-deploy
+  discard-paths: no
