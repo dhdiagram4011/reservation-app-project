@@ -2,9 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from . import views
-from .models import flightNumber, flightSection, flightAircraft, seatClass, price
+from reservation.models import flightNumber, flightSection, flightAircraft, seatClass, price, emailTicket
 from authentication.models import MyUser #회원가입
-from reservation.models import emailTicket #예약내역 조회
 
 from rest_framework import viewsets
 from rest_framework import permissions

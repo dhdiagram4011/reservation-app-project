@@ -1,4 +1,4 @@
-from .models import flightSection, flightNumber, flightAircraft, seatClass, price
+from reservation.models import flightSection, flightNumber, flightAircraft, seatClass, price
 from authentication.models import MyUser
 from reservation.models import emailTicket
 from rest_framework import routers, serializers
