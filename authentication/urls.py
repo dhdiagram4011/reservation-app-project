@@ -8,6 +8,7 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('account/', login_view, name='login'),
     path('logout/', logout, name='logout'),
+    path('exit/', logout, name='logout'),
     path('register/', registration, name='registration'),
     path('registrationSuccess/', registrationSuccess, name='registrationSuccess'),
     path('already_exists/', already_exists, name='already_exists'),
