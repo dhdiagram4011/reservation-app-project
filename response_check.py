@@ -42,7 +42,7 @@ def status_check():
         #print (jsonData)
         res_json = json.dumps(jsonData)
     
-        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
+        WEB_HOOK_URL = ''
         headers = {'Content-type':'application/json'}
         print(res_json)
         requests.post(WEB_HOOK_URL, headers=headers, data=res_json)
