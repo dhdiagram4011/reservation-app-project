@@ -39,11 +39,14 @@ def status_check():
         response = requests.get(URL_ALL)
         health_check = response.status_code ,'+', URL_ALL.split(',')
         jsonData = json.dumps(health_check)
-        print(jsonData)
+        #print (jsonData)
+        res_json = json.dumps(jsonData)
     
-        WEB_HOOK_URL = ''
+        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
         headers = {'Content-type':'application/json'}
-        response = requests.post(WEB_HOOK_URL, headers=headers, data=json.dumps(jsonData))
+        print(res_json)
+        requests.post(WEB_HOOK_URL, headers=headers, data=res_json)
+        #requests.post(WEB_HOOK_URL, headers=headers, data='{"text":"alert!!!!!"}')
 
 
 
