@@ -13,7 +13,7 @@ import json
 def status_check():
 
     FARGATE_HOST = 'http://13.125.124.194:8000'
-    
+
     SVC_PATH = [
     '/admin', 
     '/auth/register', 
@@ -38,11 +38,12 @@ def status_check():
         URL_ALL = FARGATE_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
         response = requests.get(URL_ALL)
         health_check = response.status_code ,'+', URL_ALL.split(',')
-        print(health_check)
+        jsonData = json.dumps(health_check)
+        print(jsonData)
     
         WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
         headers = {'Content-type':'application/json'}
-        response = requests.post(WEB_HOOK_URL, data=json.dumps(health_check))
+        response = requests.post(WEB_HOOK_URL, headers=headers, data=json.dumps(jsonData))
 
 
 
