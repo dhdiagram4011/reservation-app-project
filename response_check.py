@@ -1,10 +1,19 @@
 import requests
 import json
 
+
+## slack url : https://app.slack.com/client/T01A7E44RNX/C01A7E451KM
+## app id : A01A45QN893
+## client id : 1347480161779.1344194756309
+## client secret : 95f9885ab57cb0890204cff436132866
+## veri token : wRznTSY59HfrQmPJSc6lb5Mb
+## webhook url : https://hooks.slack.com/services/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
+
+
 def status_check():
 
-    HOST = "http://13.125.124.194:8000"
-
+    FARGATE_HOST = 'http://13.125.124.194:8000'
+    
     SVC_PATH = [
     '/admin', 
     '/auth/register', 
@@ -18,7 +27,6 @@ def status_check():
     '/reservation/date_search',
     '/reservation/date_search_result',
     '/reservation/ticketing_list',
-    '/reservation/ticketing_list',
     '/revapi/seatmodify',
     '/revapi/schedulemodify',
     '/revapi/schedule_adding',
@@ -26,31 +34,16 @@ def status_check():
     '/revapi/seat',
     ] 
   
-  
-###print(SVC_PATH[0].split(','))  ### admin
-
-    URL_0 = HOST + str(SVC_PATH[0].split(',')).replace('[','').replace(']','').replace('\'','') 
-    URL_1 = HOST + str(SVC_PATH[1].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_2 = HOST + str(SVC_PATH[2].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_3 = HOST + str(SVC_PATH[3].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_4 = HOST + str(SVC_PATH[4].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_5 = HOST + str(SVC_PATH[5].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_6 = HOST + str(SVC_PATH[6].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_7 = HOST + str(SVC_PATH[7].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_8 = HOST + str(SVC_PATH[8].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_9 = HOST + str(SVC_PATH[9].split(',')).replace('[','').replace(']','').replace('\'','')
-    URL_10 = HOST + str(SVC_PATH[10].split(',')).replace('[','').replace(']','').replace('\'','')
-
-
-    #url = URL_1
-    response = requests.get(URL_6)
-    response.status_code
-    print(response.status_code ,'+', SVC_PATH[6].split(','))
-
+    for i in SVC_PATH:
+        URL_ALL = FARGATE_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
+        response = requests.get(URL_ALL)
+        health_check = response.status_code ,'+', URL_ALL.split(',')
+        print(health_check)
+    
+        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
+        headers = {'Content-type':'application/json'}
+        response = requests.post(WEB_HOOK_URL, data=json.dumps(health_check))
 
 
 
 status_check()
-
-
-
