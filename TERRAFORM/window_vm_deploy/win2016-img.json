@@ -1,0 +1,65 @@
+{
+    "builders": [{
+        "CPUs": "{{user `vm-cpu-num`}}",
+        "RAM": "{{user `vm-mem-size`}}",
+        "cluster": "{{user `vsphere-cluster`}}",
+        "communicator": "winrm",
+        "convert_to_template": "true",
+        "datacenter": "{{user `vsphere-datacenter`}}",
+        "datastore": "{{user `vsphere-datastore`}}",
+        "disk_controller_type": "lsilogic-sas",
+        "firmware": "bios",
+        "floppy_files": [
+            "autounattend.xml",
+            "NiceGRP-Windows2K16-Script.ps1"
+        ],
+        "folder": "{{user `vsphere-folder`}}",
+        "guest_os_type": "windows9Server64Guest",
+        "insecure_connection": "true",
+        "iso_paths": [
+            "{{user `os_iso_path`}}",
+            "[] /vmimages/tools-isoimages/windows.iso"
+        ],
+        "network_adapters": [{
+            "network": "{{user `vsphere-network`}}",
+            "network_card": "vmxnet3"
+        }],
+        "notes": "Build via Packer",
+        "password": "{{user `vsphere-password`}}",
+        "storage": [{
+            "disk_size": "{{user `vm-disk-size`}}",
+            "disk_thin_provisioned": true
+        }],
+        "type": "vsphere-iso",
+        "username": "{{user `vsphere-user`}}",
+        "vcenter_server": "{{user `vsphere-server`}}",
+        "vm_name": "{{user `vm-name`}}",
+        "winrm_password": "{{user `winadmin-password`}}",
+        "winrm_username": "Administrator"
+    }],
+    "provisioners": [{
+        "inline": [
+            "ipconfig"
+        ],
+        "type": "windows-shell"
+    }],
+    "sensitive-variables": [
+        "vsphere_password",
+        "winadmin_password"
+    ],
+    "variables": {
+        "os_iso_path": "[vsanDatastore] ISO/SW_DVD9_Win_Svr_STD_Core_and_DataCtr_Core_2016_64Bit_Korean_-3_MLF_X21-30358.ISO",
+        "vm-cpu-num": "2",
+        "vm-disk-size": "40960",
+        "vm-mem-size": "4096",
+        "vm-name": "NICE-Win2016-Template-2000",
+        "vsphere-cluster": "Cluster",
+        "vsphere-datacenter": "Datacenter",
+        "vsphere-datastore": "vsanDatastore",
+        "vsphere-network": "Management Port Group",
+        "vsphere-password": "VMware1!",
+        "vsphere-server": "vcsa.rpcb.local",
+        "vsphere-user": "administrator@vsphere.local",
+        "winadmin-password": "VMware1!"
+    }
+}
