@@ -18,5 +18,6 @@ urlpatterns = [
     path('reservation-api/', include('rest_framework.urls')),
     path('seatmodify/<int:id>/', views.seatClass_update_and_delete),  #좌석수정/삭제 API
     path('schedulemodify/<int:id>/', views.schedule_update_and_delete),  #운항스케쥴 수정/삭제 API
+    path('monitoring/', views.service_status_check),
     #path('pricedelete/', views.price_update_and_delete),
 ]

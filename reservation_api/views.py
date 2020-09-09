@@ -4,16 +4,16 @@ from rest_framework.decorators import api_view
 from . import views
 from reservation.models import flightNumber, flightSection, flightAircraft, seatClass, price, emailTicket
 from authentication.models import MyUser #회원가입
-
-from rest_framework import viewsets
-from rest_framework import permissions
-
+from rest_framework import viewsets, permissions
 from reservation_api.serializers import flightSectionSerializer, flightNumberSerializer, flightAircraftSerializer,seatClassSerializer, priceSerializer, MyUserSerializer,emailTicketSerializer,seatClassDeleteSerializer
 
 from rest_framework.generics import DestroyAPIView
 from .serializers import seatClassSerializer
-
 from rest_framework.response import Response
+
+### api call pip package
+import requests
+import json
 
 class RevSearchViewsets(viewsets.ModelViewSet): #회원별 예약내역 조회
     queryset = emailTicket.objects.all()
@@ -78,3 +78,43 @@ def schedule_update_and_delete(request, id):
     else:
         FlightSection.delete()
         return Response({'messages':'운항구간 삭제가 완료되었습니다'})
+
+
+# service status check result message to slack
+@api_view(['POST'])
+def service_status_check(request):
+    if request.method == 'POST':
+
+        FARGATE_HOST = 'http://13.125.124.194:8000'
+
+        SVC_PATH = [
+        "/admin", 
+        "/auth/register", 
+        "/auth/login",
+        "/auth/logout", 
+        "/auth/myinfo",
+        "/auth/edit",
+        "/auth/unregister",
+        "/reservation/revstart",
+        "/reservation/course_search",    
+        "/reservation/date_search",
+        "/reservation/date_search_result",
+        "/reservation/ticketing_list",
+        "/revapi/seatmodify",
+        "/revapi/schedulemodify",
+        "/revapi/schedule_adding",
+        "/revapi/register",
+        "/revapi/seat",
+        ]
+
+        for i in SVC_PATH:
+
+            URL_ALL = FARGATE_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
+            response = requests.get(URL_ALL)
+            health_check = response.status_code ,':', URL_ALL.split(',')
+            WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
+            headers = {'Content-type':'application/json'}
+            data = {'text':json.dumps(health_check)}
+            requests.post(WEB_HOOK_URL, data=json.dumps(data), headers=headers)
+            #requests.post(WEB_HOOK_URL, headers=headers, data='{"text":"FFF!"}') ### slack sample
+    
