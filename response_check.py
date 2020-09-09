@@ -13,7 +13,7 @@ def status_check():
 
     FARGATE_HOST = 'http://13.125.124.194:8000'
 
-    SVC_PATH = (
+    SVC_PATH = [
     "/admin", 
     "/auth/register", 
     "/auth/login",
@@ -31,21 +31,21 @@ def status_check():
     "/revapi/schedule_adding",
     "/revapi/register",
     "/revapi/seat",
-    )
+    ]
 
 
 
     for i in SVC_PATH:
 
         URL_ALL = FARGATE_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
-        #URL_ALL = FARGATE_HOST + str(i)
         response = requests.get(URL_ALL)
         health_check = response.status_code ,':', URL_ALL.split(',')
         print(health_check)
-        
-        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
+
+        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
         headers = {'Content-type':'application/json'}
-        requests.post(WEB_HOOK_URL, headers=headers, data=json.dumps(health_check))
+        data = {'text':json.dumps(health_check)}
+        requests.post(WEB_HOOK_URL, data=json.dumps(data), headers=headers)
         #requests.post(WEB_HOOK_URL, headers=headers, data='{"text":"FFF!"}')
 
 status_check()
