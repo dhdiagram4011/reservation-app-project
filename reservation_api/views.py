@@ -112,7 +112,7 @@ def service_status_check(request):
             URL_ALL = FARGATE_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
             response = requests.get(URL_ALL)
             health_check = response.status_code ,':', URL_ALL.split(',')
-            WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
+            WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
             headers = {'Content-type':'application/json'}
             data = {'text':json.dumps(health_check)}
             requests.post(WEB_HOOK_URL, data=json.dumps(data), headers=headers)
