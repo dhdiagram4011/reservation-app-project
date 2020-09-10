@@ -85,7 +85,7 @@ def schedule_update_and_delete(request, id):
 def service_status_check(request):
     if request.method == 'POST':
 
-        FARGATE_HOST = 'http://13.125.124.194:8000'
+        FARGATE_HOST = 'http://13.125.231.113:8000'
 
         SVC_PATH = [
         "/admin", 

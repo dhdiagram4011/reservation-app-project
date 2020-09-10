@@ -11,7 +11,7 @@ import json
 
 def status_check():
 
-    FARGATE_HOST = 'http://13.125.124.194:8000'
+    FARGATE_HOST = 'http://13.125.231.113:8000'
 
     SVC_PATH = [
     "/admin", 
