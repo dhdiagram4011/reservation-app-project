@@ -15,6 +15,30 @@ from rest_framework.response import Response
 import requests
 import json
 
+
+#전체 항공편 조회
+class flightSectionViewsets(viewsets.ModelViewSet):
+    queryset = flightSection.objects.all()
+    serializer_class = flightSectionSerializer
+
+    def dic(self):
+        fields = ['starting_point','arrival','flight_time','daytogo','comingDay']
+        result = {}
+        for field in fields:
+            result[field] = self.__dict__[field]
+        return result
+
+        if request.method == 'GET':
+            SLACK_URL = 'https://hooks.slack.com/services/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'
+            result_data = flightSection.objects.all()
+            datas = result_data.dic()
+            headers = {'Content-type':'application/json'}
+            data = {'text':json.dumps(datas)}
+            requests.post(SLACK_URL, data=json.dumps(data), headers=headers)
+            
+
+
+
 class RevSearchViewsets(viewsets.ModelViewSet): #회원별 예약내역 조회
     queryset = emailTicket.objects.all()
     serializer_class = emailTicketSerializer
@@ -44,8 +68,6 @@ class flightAircraftViewsets(viewsets.ModelViewSet):
 class seatClassViewsets(viewsets.ModelViewSet):
     queryset = seatClass.objects.all()
     serializer_class = seatClassSerializer
-
-    ## PUT : 데이터 수정 / DELETE : 데이터 삭제
 
 
 class priceViewsets(viewsets.ModelViewSet):
