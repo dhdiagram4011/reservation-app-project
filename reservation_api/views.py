@@ -16,6 +16,27 @@ import requests
 import json
 
 
+#가입 회원 전체내역 조회
+class memberViwsets(viewsets.ModelViewSet):
+    queryset = MyUser.objects.all()
+    serializer_class = MyUserSerializer
+
+    def dic(self):
+        fields = ['koreanLastname','englishLastname','englishFirstname','address','email','password','detailAddress','phoneNumber','created_date','published_date']
+        result = {} # for slack message send notification
+
+        for field in fields:
+            result[field] = self.__dict__[field]
+        return result
+
+        if request.method == 'GET':
+            SLACK_URL = 'https://hooks.slack.com/services/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'
+            result_data = MyUser.objects.all()
+            headers = {'content-Type':'application/json'}
+            data = {'text':json.dumps(result_data)}
+            request.post(SLACK_URL, data=json.dumps(data), headers=headers)
+ 
+    
 #전체 항공편 조회
 class flightSectionViewsets(viewsets.ModelViewSet):
     queryset = flightSection.objects.all()

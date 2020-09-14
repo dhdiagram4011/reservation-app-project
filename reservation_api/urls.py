@@ -13,6 +13,7 @@ router.register(r'register' , views.registerViewsets) #회원가입
 router.register(r'priceadd' , views.priceViewsets) #가격추가
 router.register(r'seat', views.seatClassViewsets) #좌석추가
 router.register(r'courseall',views.flightSectionViewsets) #전체 운항스케쥴 조회
+router.register(r'memberlist',views.memberViwsets) #가입회원 리스트 조회
 
 
 urlpatterns = [
