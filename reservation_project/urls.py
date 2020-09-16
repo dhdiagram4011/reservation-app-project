@@ -26,7 +26,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('data_save/', include('data_save.urls')),
     path('boards/' , include('boardsapi.urls')),
-    path('revapi/', include('reservation_api.urls')), #api call
+    path('', include('reservation_api.urls')), #api call - api.dhdiagram.me
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
