@@ -1,7 +1,7 @@
 FROM digglerz/python3.8
 
 MAINTAINER dhdiagram@gmail.com
-EXPOSE 8000
+EXPOSE 80
 WORKDIR /app
 ADD . /app
 RUN pip3 install djangorestframework
