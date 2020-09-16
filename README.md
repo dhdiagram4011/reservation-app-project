@@ -153,9 +153,9 @@ MIT lisence(dhdiagram@gmail.com)
 
 
 ### URI 및 API 리스트
-    1. localhost:8000/revapi/seatmodify/{id} : 좌석 리스트 삭제 및 수정
-    2. localhost:8000/revapi/schedulemodify/{id} : 운항스케쥴 리스트 삭제 및 수정
-    3. localhost:8000/revapi/schedule_adding : 운항스케줄 추가
-    4. localhost:8000/revapi/register : 회원가입
-    5. localhost:8000/revapi/seat : 좌석 리스트 추가  
+    1. api.dhdiagram.me/seat : 좌석조회
+    2. api.dhdiagram.me/priceadd : 항공권가격추가
+    3. api.dhdiagram.me/revapi/schedule_adding : 운항스케줄 추가
+    4. api.dhdiagram.me/register : 회원가입
+    5. api.dhdiagram.me/memberlist : 가입 회원 리스트 출력
 
