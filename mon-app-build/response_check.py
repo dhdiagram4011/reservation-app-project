@@ -40,7 +40,6 @@ def status_check():
     ]
 
 
-
     for i in SVC_PATH:
 
         URL_ALL = EKS_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
@@ -48,7 +47,7 @@ def status_check():
         health_check = response.status_code ,':', URL_ALL.split(',')
         print(health_check)
 
-        WEB_HOOK_URL = ''
+        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
         headers = {'Content-type':'application/json'}
         data = {'text':json.dumps(health_check)}
         requests.post(WEB_HOOK_URL, data=json.dumps(data), headers=headers)
@@ -62,7 +61,7 @@ def status_check():
         health_check = response.status_code ,':', URL_ALL.split(',')
         print(health_check)
 
-        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
+        WEB_HOOK_URL = 'https://hooks.slack.com/services/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'
         headers = {'Content-type':'application/json'}
         data = {'text':json.dumps(health_check)}
         requests.post(WEB_HOOK_URL, data=json.dumps(data), headers=headers)

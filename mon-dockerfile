@@ -1,0 +1,12 @@
+FROM paigeeworld/centos7
+
+MAINTAINER dhdiagram@gmail.com
+EXPOSE 8001
+WORKDIR /app
+ADD ./response_check.py /app
+RUN yum install python3 python3-pip -y
+RUN pip3 install requests
+RUN yum install cron* -y
+CMD /etc/crontab >> 15 * * * * python3 /app/response_check.py
+CMD systemctl enable crond
+CMD systemctl start crond

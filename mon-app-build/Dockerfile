@@ -1,13 +1,13 @@
-FROM yosugi/cron-centos
-
+FROM alpine
 MAINTAINER dhdiagram@gmail.com
 EXPOSE 8001
 WORKDIR /app
 ADD ./response_check.py /app
 ADD ./blank.py /app
-RUN yum install python3 python3-pip crond crontab -y
+RUN apk add --update python3 py3-pip
+RUN apk add tzdata
+RUN cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 RUN pip3 install requests
-CMD /etc/crontab >> 05 * * * * python3 /app/response_check.py
-CMD systemctl enable crond
-CMD systemctl start crond
-CMD ["nohup", "python3" ,"/app/blank.py"]
+RUN echo '35 * * * * python3 /app/response_check.py' > /etc/crontabs/root
+CMD ["crond"]
+CMD ["nohup","python3","/app/blank.py"]

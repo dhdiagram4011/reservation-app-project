@@ -11,7 +11,7 @@ import json
 
 def status_check():
 
-    FARGATE_HOST = 'http://13.125.231.113:8000'
+    EKS_HOST = 'http://a8bdd5f7b96aa473ab24d95145037461-1710871681.ap-northeast-2.elb.amazonaws.com'
 
     SVC_PATH = [
     "/admin", 
@@ -37,7 +37,7 @@ def status_check():
 
     for i in SVC_PATH:
 
-        URL_ALL = FARGATE_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
+        URL_ALL = EKS_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
         response = requests.get(URL_ALL)
         health_check = response.status_code ,':', URL_ALL.split(',')
         print(health_check)

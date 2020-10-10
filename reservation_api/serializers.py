@@ -24,6 +24,7 @@ class MyUserSerializer(serializers.HyperlinkedModelSerializer):
         model = MyUser
         fields = ['koreanLastname','koreanFirstname','englishLastname','englishFirstname','address','email','password','detailAddress','phoneNumber'] 
 
+
     
 class flightSectionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
