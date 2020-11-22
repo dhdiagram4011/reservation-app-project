@@ -13,7 +13,7 @@ import requests
 
 
 # 회원가입 후 가입정보 이메일 발송 / ASIS - usermail  , TOBE - sendmail
-def send_info(request):
+def send_email(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     print(userlists)
     title = "[통합예약시스템]회원가입을 환영합니다"
@@ -21,6 +21,9 @@ def send_info(request):
     email = EmailMessage(title, html_messsage, to=[request.POST["email"]])
     email.content_subtype = "html"
     return email.send()
+
+
+def send_sms(requests):
     url = 'https://sms.gabia.com/api/send/sms'
     payload = 'phone=01021764011&callback=01021764011&message=SMS%20TEST%20MESSAGE&refkey=[[RESTAPITEST1549847130]]' 
     headers = {
@@ -51,7 +54,8 @@ def registration(request):
             #password = request.POST.get('password','-')
             post.set_password(password)
             post.save()
-            send_info(request)
+            send_email(request)
+            send_sms(request)
         return redirect('authentication:registrationSuccess')
 
 
