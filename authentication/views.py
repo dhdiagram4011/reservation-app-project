@@ -9,12 +9,11 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth import login, authenticate
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
-# from django.views.decorators.cache import cache_page
-
+import requests
 
 
 # 회원가입 후 가입정보 이메일 발송 / ASIS - usermail  , TOBE - sendmail
-def sendmail(request):
+def send_info(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     print(userlists)
     title = "[통합예약시스템]회원가입을 환영합니다"
@@ -22,8 +21,15 @@ def sendmail(request):
     email = EmailMessage(title, html_messsage, to=[request.POST["email"]])
     email.content_subtype = "html"
     return email.send()
+    url = 'https://sms.gabia.com/api/send/sms'
+    payload = 'phone=01021764011&callback=01021764011&message=SMS%20TEST%20MESSAGE&refkey=[[RESTAPITEST1549847130]]' 
+    headers = {
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Authorization':'Basic DckviEksLs6ZXlKMGVYQWlPaUpLVhiR2NpT2lKU1V6STFOaUo5LmV5SnBjM01pT2lKb2RIUndjenBjTDF3dmMyMXpMbWRoWW1saExtTnZiVnd2SWl3aVlYVmtJam9pWEM5dllYVjBhRnd2ZEc5clpXNGlMQ0pshWFhnT2pBNG5uVkVuLWtnVEJoRGpPeWc='
+    }
+    response = requests.request('POST',url, headers=headers, data=payload, allow_redirects=False, timeout=1)
 
-    
+  
 
 def registration(request):
     if request.method == 'GET':
@@ -45,7 +51,7 @@ def registration(request):
             #password = request.POST.get('password','-')
             post.set_password(password)
             post.save()
-            sendmail(request)
+            send_info(request)
         return redirect('authentication:registrationSuccess')
 
 
