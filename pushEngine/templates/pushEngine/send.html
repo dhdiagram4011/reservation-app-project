@@ -1,0 +1,16 @@
+{% block content %}
+<form method="POST">
+{% csrf_token %}
+보내는사람 번호 : {{ form.sender }}<br/>
+<br/>
+받는사람 번호 : {{ form.receiver }}<br/>
+<br/>
+메시지 제목 : {{ form.title }}<br/>
+<br/>
+메시지 내용 :<br/>
+{{ form.text }}<br/>
+<br/>
+<br/>
+<button type="submit" value="msg" onclick="location.href='/push/send/'">전송하기</button>
+</form>
+{% endblock %}

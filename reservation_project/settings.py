@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'boardsapi',
     'rest_framework',
     'reservation_api',
+    'pushEngine',
+    'searchEngine',
 ]
 
 
