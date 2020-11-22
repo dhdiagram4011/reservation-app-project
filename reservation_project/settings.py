@@ -167,7 +167,7 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = '/reservation/revstart/'
 LOGIN_URL = '/auth/login/'
 
-# EMAIL
+# EMAIL # 고객이 회원가입 및 티켓예약 시 정보를 아래의 메일을 From 으로 발송한다.
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'rlaehgud21764011@gmail.com'

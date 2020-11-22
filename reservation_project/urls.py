@@ -25,7 +25,7 @@ urlpatterns = [
     path('reservation/', include('reservation.urls')), #예약서비스
     path('auth/', include('authentication.urls')), #회원가입 서비스
     path('data_save/', include('data_save.urls')), #예약내역 저장
-    path('boards/' , include('boardsapi.urls')), #게시판
+    ###path('boards/' , include('boardsapi.urls')), #게시판
     path('', include('reservation_api.urls')), #api call - api.dhdiagram.me
     path('/push', include('pushEngine.urls')), #예약내역 문자 발송 서비스
     path('/search', include('searchEngine.urls')), #예약내역 검색 서비스
