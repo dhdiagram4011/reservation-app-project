@@ -13,17 +13,6 @@ import requests
 import os
 from twilio.rest import Client
 
-def send_sms(requests):
-    account_sid = os.environ['TWILIO_ACCOUNT_SID']
-    auth_token = os.environ['TWILIO_AUTH_TOKEN']
-    client = Client(account_sid, auth_token)
-
-    message = client.messages.create(
-                            body='회원가입이 완료되었습니다.',
-                            from_='+16468460142',
-                            to='+8201021764011'
-                        )
-
 def send_email(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     print(userlists)
@@ -32,7 +21,16 @@ def send_email(request):
     email = EmailMessage(title, html_messsage, to=[request.POST["email"]])
     email.content_subtype = "html"
     return email.send()
-    send_sms()
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
+    message = client.messages.create(
+                            body='회원가입이 완료되었습니다.',
+                            from_='+16468460142',
+                            to='+8201021764011'
+                            #to="+82" + request.POST["phoneNumber"]
+                        )
+
 
 
 def registration(request):
@@ -56,7 +54,6 @@ def registration(request):
             post.set_password(password)
             post.save()
             send_email(request)
-            send_sms(request)
         return redirect('authentication:registrationSuccess')
 
 
