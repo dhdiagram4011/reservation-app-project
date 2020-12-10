@@ -177,6 +177,8 @@ dmypy.json
 # Ignore all local history of files
 .history
 
+### TWILLO MSG
+.twilio.env
 **/.venv
 **/.DS_Store 
 /Users/dohyoungkim/Downloads/revapp/new_rev_app/reservation_project/settings.py
