@@ -187,4 +187,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #     }
 # }
 
-
+# ElasticCache
+CACHES = {
+    'default' : {
+        'BACKEND' : 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': [
+            'reservation-app.e3c6ko.cfg.apn2.cache.amazonaws.com:11211',
+        ]
+    }
+}

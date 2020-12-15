@@ -1,0 +1,6 @@
+projectKey=local-reservation-app
+serverUrl=http://localhost:9000
+serverVersion=8.4.1.35646
+dashboardUrl=http://localhost:9000/dashboard?id=local-reservation-app
+ceTaskId=AXZWKwBRsi3LRXogO9wS
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXZWKwBRsi3LRXogO9wS

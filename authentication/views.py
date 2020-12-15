@@ -12,6 +12,7 @@ from django.contrib.auth.hashers import make_password
 import requests
 import os
 from twilio.rest import Client
+from django.views.decorators.cache import cache_page
 
 def send_email(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
@@ -66,7 +67,7 @@ def already_exists(request):
     return render(request, 'authentication/already_exists.html')
 
 
-#@cache_page(60 * 20)
+@cache_page(60 * 20)
 def login_view(request):
     if request.method == 'GET':
         form = loginForm()
