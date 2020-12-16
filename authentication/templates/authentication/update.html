@@ -1,0 +1,12 @@
+{% load bootstrap4 %}
+{% block container %}
+
+<h3>회원정보 수정 페이지 입니다. 아이디 변경은 불가능 합니다.</h3>
+<form method="POST">
+{% csrf_token %}
+{% bootstrap_form user_info_change %}
+<input type="submit" value="수정하기">
+</form>
+{% endblock %}
+
+

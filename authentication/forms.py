@@ -22,6 +22,16 @@ class registrationForm(forms.ModelForm):
     email = forms.CharField(label="이메일주소", widget=forms.TextInput(attrs={'placeholder': '이메일주소', 'style' : 'width:15em; height:3em; background-color:#F1F0EF; text-align:center; border:none; width:25em;'}))
 
 
+#회원정보 수정을 위한 폼
+from dango.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import get_user_model
+
+class ModifyUserChangeForm(UserChangeForm):
+    class Meta:
+        model = MyUser
+        fields = ['address','detailAddress','phoneNumber','email']
+
+
 
 class MemberListForm(forms.ModelForm):
     class Meta:

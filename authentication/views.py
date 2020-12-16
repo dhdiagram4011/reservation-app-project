@@ -11,8 +11,13 @@ from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 import requests
 import os
+#sms message push service
 from twilio.rest import Client
+#ElasticCache
 from django.views.decorators.cache import cache_page
+#회원정보 수정을 위한 폼 불러오기
+from django.contrib.auth.forms import UserChangeForm
+
 
 def send_email(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
@@ -26,14 +31,15 @@ def send_email(request):
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
     message = client.messages.create(
-                            body='회원가입이 완료되었습니다.',
+                            #body = html_messsage,
+                            body='회원가입이 완료되었습니다(20201216)',
                             from_='+16468460142',
                             to='+8201021764011'
                             #to="+82" + request.POST["phoneNumber"]
                         )
 
 
-
+#회원가입
 def registration(request):
     if request.method == 'GET':
         form = registrationForm(request.GET)
@@ -57,6 +63,12 @@ def registration(request):
             send_email(request)
         return redirect('authentication:registrationSuccess')
 
+# def clean_username(self):
+#     username = self.cleaned_data['username']
+#     if MyUser.objects.filter(username=username).exists():
+#         raise forms.ValidationError(u'id "%s" 가 이미 존재합니다, 다른 아이디를 이용해 주세요' % username)
+
+
 
 def registrationSuccess(request):
     userlists = MyUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
@@ -67,7 +79,6 @@ def already_exists(request):
     return render(request, 'authentication/already_exists.html')
 
 
-@cache_page(60 * 20)
 def login_view(request):
     if request.method == 'GET':
         form = loginForm()
@@ -78,6 +89,8 @@ def login_view(request):
 
         user = authenticate(username=username, password=password)
 
+
+    #로그인 시 만약 가입되어 있는 아이디가 없으면 팝업 메시지 출력
         if user is not None:
             login(request, user)
             return redirect('reservation:revstart')
@@ -90,15 +103,10 @@ def logout(request):
     auth.logout(request)
     form = loginForm()
     return render(request, 'authentication/login.html', {'form':form})
-    ## session
-    # username = request.POST.get('username','')
-    # password = request.POST.get('password','')
-    # user = authenticate(username=username, password=password)
-    # if request.session['user']:
-    #     del(request.session['user'])
-    # return render(request, 'authentication/login.html')
+
 
 # 나의 정보 보기
+@cache_page(60 * 20) #ElaistcCache
 def myinfo(request):
     myprofile_pks = MyUser.objects.get(id=request.POST['uinfo'])
     return render(request, 'authentication/myinfo.html', {'myprofile_pks': myprofile_pks})
@@ -111,6 +119,14 @@ def unregister(request):
             form = loginForm()
         return render(request, 'authentication/unregister_success.html', {'form': form})
         
-# 회원정보 수정
+
+# 회원정보 수정 ### ModifyUserChangeForm
 def edit(request):
-    pass
+    if request.method == 'POST':
+        user_info_change = ModifyUserChangeForm(request.POST, instacne = request.username)
+        if user_info_change.is_valid():
+            user_info_change.save()
+            return redirect('authentication:myinfo', request.user.username)
+    else:
+            user_info_change = ModifyUserChangeForm(instance = request.user)
+        return render(request, 'authentication/update.html', {'user_info_change':user_info_change})

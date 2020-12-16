@@ -15,5 +15,5 @@ urlpatterns = [
     path('unregister/', unregister, name='unregister'),
     ##path('loginSuccess/', loginSuccess, name='loginSuccess'),
     path('myinfo/', myinfo, name='myinfo'),
-    path('edit/', edit, name='edit'),
+    path('edit/', edit, name='edit'), #회원정보 수정
 ]
