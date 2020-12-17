@@ -4,10 +4,6 @@ files:
   - source: /
     destination: /app/reservation-app-advanced
 hooks:
-  BeforeInstall:
-    - location: /app/reservation-app-advanced/pip_install.sh
-      timeout: 300
-      runas: root
   ApplicationStart:
     - location: /app/reservation-app-advanced/manage.py makemigrations && /app/reservation-app-advanced/manage.py migrate
     - location: python3 /app/reservation-app-advanced/manage.py runserver 0:8000 &
