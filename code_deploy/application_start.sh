@@ -8,4 +8,6 @@ sudo pip3 install djangorestframework
 sudo pip3 install request
 python3 /home/ec2-user/app/manage.py makemigrations
 python3 /home/ec2-user/app/manage.py migrate
-nohup python3 /home/ec2-user/app/manage.py runserver 0:8000 &
+python3 /home/ec2-user/app/manage.py runserver 0:8000 &
+echo -ne '\n'
+
