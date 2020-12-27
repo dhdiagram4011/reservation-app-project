@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import reservationForm, datesearchForm, emailTicketForm
 from .models import flightSection, seatClass, emailTicket
@@ -114,6 +113,7 @@ def ticket_list(request):
     return render(request, 'reservation/rev_start.html', {'form':form})
 
 
+# 나의 예약 내역 리스트
 def my_tc_list(request):
     if request.method == 'GET':
         my_tickets = emailTicket.objects.filter(id=request.GET.get('myticket'))
@@ -162,7 +162,7 @@ def course_search(request):
 
 
 
-# 날짜기반 항공권 조회기능
+# 날짜기반 항공권 조회기능 (qs search)
 def date_search_result(request):
     try:
         courses = flightSection.objects.filter(daytogo=request.GET['daytogo'])
