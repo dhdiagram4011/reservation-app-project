@@ -1,6 +1,6 @@
 artifacts:
   files:
     - '**/*'
-  base-directory: /app
+  base-directory: /home/ec2-user/app
   name: apiapp-deploy
   discard-paths: no
