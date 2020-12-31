@@ -4,6 +4,7 @@ sudo rm -rf /home/ec2-user/app/*
 sudo rm -rf /home/ec2-user/app/.*
 sudo yum update -y
 mkdir -p /home/ec2-user/app
+chown -R ec2-user:ec2-user /home/ec2-user/app
 cd /home/ec2-user/app
 sudo yum remove python3* -y
 sudo yum install python3* -y
