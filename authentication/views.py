@@ -106,7 +106,7 @@ def logout(request):
 
 
 # 나의 정보 보기
-@cache_page(60 * 20) #ElaistcCache
+#@cache_page(60 * 20) #ElaistcCache
 def myinfo(request):
     myprofile_pks = MyUser.objects.get(id=request.POST['uinfo'])
     return render(request, 'authentication/myinfo.html', {'myprofile_pks': myprofile_pks})
