@@ -23,7 +23,7 @@ class registrationForm(forms.ModelForm):
 
 
 #회원정보 수정을 위한 폼
-from dango.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import get_user_model
 
 class ModifyUserChangeForm(UserChangeForm):
