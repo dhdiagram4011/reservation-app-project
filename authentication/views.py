@@ -129,4 +129,4 @@ def edit(request):
             return redirect('authentication:myinfo', request.user.username)
     else:
             user_info_change = ModifyUserChangeForm(instance = request.user)
-        return render(request, 'authentication/update.html', {'user_info_change':user_info_change})
+            return render(request, 'authentication/update.html', {'user_info_change':user_info_change})
