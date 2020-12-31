@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo -i
-sudo yum update -y
+yum update -y
 mkdir -p /root/apps
 yum remove python3* -y
 yum install python3* -y
