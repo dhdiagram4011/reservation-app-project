@@ -1,9 +1,9 @@
 #!/bin/bash
 
 sudo yum update -y
-sudo rm -rf /home/ec2-user/* 
+sudo rm -rf /home/ec2-user/*
 cd /home/ec2-user/apps
-git clone -b develop https://github.com/dhdiagram4011/reservation-app-project.git .
+sudo git clone -b develop https://github.com/dhdiagram4011/reservation-app-project.git .
 sudo yum remove python3* -y
 sudo yum install python3* -y
 sudo pip3 install djangorestframework
