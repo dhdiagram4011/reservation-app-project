@@ -1,5 +1,4 @@
 from django.urls import path
-from searchEngine import views
 from .views import *
 
 
