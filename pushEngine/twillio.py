@@ -28,7 +28,7 @@ auth_token = os.environ['TWILIO_AUTH_TOKEN']
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
-                              body='테스트 메시지 입니다',
+                              body='AWS codepipeline deploy success!!!',
                               from_='+16468460142',
                               to='+8201021764011'
                           )
