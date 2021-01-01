@@ -20,7 +20,7 @@ def index(request):
 def intro(request):
     return render(request, 'reservation/intro.html')
 
-
+    
 # 예약 완료 후 티켓발송 및 티켓 내용 SMS 전달
 def eticket_send(request):
     courses = flightSection.objects.get(id=request.POST['course_choice'])
