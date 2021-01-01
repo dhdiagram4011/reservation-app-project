@@ -1,8 +1,0 @@
-[Unit]
-Description = reservation-app-service
-After = network.target
-
-[Service]
-User=root
-Group=root
-WorkingDirectory
