@@ -9,6 +9,9 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.utils import timezone
 
+import os
+from twilio.rest import Client
+
 
 def index(request):
     return render(request, 'reservation/index.html')
@@ -18,7 +21,7 @@ def intro(request):
     return render(request, 'reservation/intro.html')
 
 
-# 예약 완료 후 티켓발송
+# 예약 완료 후 티켓발송 및 티켓 내용 SMS 전달
 def eticket_send(request):
     courses = flightSection.objects.get(id=request.POST['course_choice'])
     title = "[KAL-E-TICKET]예약이 완료되었습니다(E-TICKET발송안내)"
@@ -27,8 +30,20 @@ def eticket_send(request):
     email.content_subtype = "html"
     return email.send()
 
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
 
-# 예약 완료 후 티켓수동발송
+    message = client.messages.create(
+                                  #body='AWS codepipeline deploy success!!!', - plain text
+                                  body= html_messsage
+                                  from_='+16468460142',
+                                  to='+8201021764011'
+                                )
+
+
+
+# 예약 완료 후 티켓수동발송 및 SMS 재발송
 def eticket_resend(request):
     courses = flightSection.objects.get(id=request.POST['course_choice'])
     title = "[KAL-E-TICKET]항공권 발송완료(E-TICKET발송)"
@@ -36,6 +51,17 @@ def eticket_resend(request):
     email = EmailMessage(title, html_messsage, to=[request.POST["email"]])
     email.content_subtype = "html"
     return email.send(courses)
+
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+                                  #body='AWS codepipeline deploy success!!!', - plain text
+                                  body= html_messsage
+                                  from_='+16468460142',
+                                  to='+8201021764011'
+                                )
 
 
 #예약 기록 저장 --> email_ticket
