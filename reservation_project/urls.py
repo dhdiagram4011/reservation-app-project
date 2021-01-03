@@ -28,7 +28,7 @@ dhdiagram.net/auth : 일반유저 회원가입 서비스
 dhdiagram.net/data_save : 예액내역 저장 서비스
 dhdiagram.net/ : api 서비스
 dhdiagram.net/push : 문자발송 서비스
-dhdiagram.net/stm : 최고 관리자 회원가입
+dhdiagram.net/stm : 최고 관리자(점포관리자) 회원가입
 """
 urlpatterns = [
     path('admin/', admin.site.urls),
