@@ -36,7 +36,7 @@ def eticket_send(request):
 
     message = client.messages.create(
                                   #body='AWS codepipeline deploy success!!!', - plain text
-                                  body= html_messsage
+                                  body= html_messsage,
                                   from_='+16468460142',
                                   to='+8201021764011'
                                 )
@@ -57,7 +57,7 @@ def eticket_resend(request):
 
     message = client.messages.create(
                                   #body='AWS codepipeline deploy success!!!', - plain text
-                                  body= html_messsage
+                                  body= html_messsage,
                                   from_='+16468460142',
                                   to='+8201021764011'
                                 )
@@ -182,7 +182,6 @@ def course_search(request):
         return render(request, 'reservation/course_list.html', {'courses':courses})
     else:
         return render(request, 'reservation/sch_does_not_exist.html')
-
 
 
 # 날짜기반 항공권 조회기능 (qs search)
