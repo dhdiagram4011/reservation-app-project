@@ -112,19 +112,6 @@ DATABASES = {
 }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'ticketapp',
-#         'USER': 'root',
-#         'PASSWORD': 'k20504003',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -177,21 +164,13 @@ AUTH_USER_MODEL = 'authentication.MyUser'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-## ticket-app- /auth/login redis cacheing
 
+# # ElasticCache
 # CACHES = {
-#     'default': {
-#         'BACKEND': 'redis_cache.RedisCache',
-#         'LOCATION': '/tmp/redis.sock',
+#     'default' : {
+#         'BACKEND' : 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': [
+#             'reservation-app.e3c6ko.cfg.apn2.cache.amazonaws.com:11211',
+#         ]
 #     }
 # }
-
-# ElasticCache
-CACHES = {
-    'default' : {
-        'BACKEND' : 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': [
-            'reservation-app.e3c6ko.cfg.apn2.cache.amazonaws.com:11211',
-        ]
-    }
-}

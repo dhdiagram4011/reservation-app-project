@@ -24,7 +24,7 @@ def intro(request):
 # 예약 완료 후 티켓발송 및 티켓 내용 SMS 전달
 def eticket_send(request):
     courses = flightSection.objects.get(id=request.POST['course_choice'])
-    title = "[KAL-E-TICKET]예약이 완료되었습니다(E-TICKET발송안내)"
+    title = "[TICKET]예약이 완료되었습니다"
     html_messsage = render_to_string('reservation/eticket.html', {'courses': courses})
     email = EmailMessage(title, html_messsage, to=['dhdiagram@gmail.com'])
     email.content_subtype = "html"
@@ -51,7 +51,6 @@ def eticket_resend(request):
     email = EmailMessage(title, html_messsage, to=[request.POST["email"]])
     email.content_subtype = "html"
     return email.send(courses)
-
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
@@ -87,6 +86,7 @@ def email_ticket(request):
         )
         new_ticket.save()
         return render(request, 'reservation/payment.html' , {'courses':courses})
+
 
 # @login_required
 def date_search(request):
@@ -143,9 +143,6 @@ def ticket_list(request):
 def my_tc_list(request):
     if request.method == 'GET':
         my_tickets = emailTicket.objects.filter(id=request.GET.get('myticket'))
-        # my_tickets = emailTicket.objects.filter(
-        #     user=request.GET.get('user','')
-        #     )
         return render(request, 'reservation/my_ticket_list.html', {'my_tickets':my_tickets})
     else:
         form = emailTicketForm()
