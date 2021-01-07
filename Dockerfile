@@ -4,6 +4,7 @@ MAINTAINER dhdiagram@gmail.com
 EXPOSE 80
 WORKDIR /app
 ADD . /app
+RUN pip3 install twilio
 RUN pip3 install djangorestframework
 RUN pip3 install Django==2.1.5
 RUN pip3 install requests
