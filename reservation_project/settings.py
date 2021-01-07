@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'BusinessRegister',
     'reservation',
     'authentication',
     'data_save',
     'rest_framework',
     'reservation_api',
     'pushEngine',
-    'STM',
 ]
 
 

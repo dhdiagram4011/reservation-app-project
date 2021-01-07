@@ -1,5 +1,4 @@
 from django.db import models
-from .views import *
 
 
 # class flightNumber(models.Model):
@@ -9,7 +8,7 @@ from .views import *
 #         return self.number
 
 
-class STM(models.Model): 
+class BusinessJoin(models.Model):
     business_id = models.CharField(max_length=10) #사업자 아이디
     MG_number = models.CharField(max_length=3)  #점포 번호 (관리자 번호)
     Store_name = models.CharField(max_length=100) #점포 명
