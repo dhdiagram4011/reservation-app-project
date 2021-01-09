@@ -1,33 +1,17 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
+from django.template.loader import render_to_string
 from .forms import *
 from django.utils import timezone
+from twilio.rest import Client
 
-
-
-"""
-urlpatterns = [
-    path('join/', join, name='join'),
-    path('join_success/', join_success, name='join_success'),
-    path('drop/', drop, name='drop'),
-    path('drop_success', drop_success, name='drop_success'),
-]
-"""
-
-"""
-회원가입 테이블
-business_id, MG_number, Store_name ,Store_phone
-Store_address_01, Store_address_02, Representative , store_number
-bln  , stamp_design
-"""
 
 def join(request):
     if request.method == "GET":
         form = joinForm(request.GET)
         return render(request, 'BusinessRegister/join.html', {'form':form}) 
-    
     elif request.method == 'POST':
-        form = joinForm(request.POST)
+        form = joinListForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             business_id = request.POST["business_id"]
@@ -48,8 +32,8 @@ def join(request):
 #점포 관리자 회원가입 성공
 def join_success(request):
     business_members = BusinessJoin.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
-    return render(request, 'BusinessRegister/join_success.html', {'business_member':business_member})
-    success_message = render_to_string('BusinessRegister/join_success.html', {'business_member':business_member})
+    return render(request, 'BusinessRegister/join_success.html', {'business_members':business_members})
+    success_message = render_to_string('BusinessRegister/join_success.html', {'business_members':business_members})
 
     def send_sms(request):
         account_sid = os.environ['TWILIO_ACCOUNT_SID']
@@ -64,11 +48,11 @@ def join_success(request):
 
 #점포 관리자 회원탈퇴
 def drop(request):
-    pass
+    return render(request, 'BusinessRegister/drop.html')
 
 
 # 점포관리자 회원탈퇴 성공
 def drop_success(request):
-    pass
+    return render(request, 'BusinessRegister/drop_success.html')
 
 

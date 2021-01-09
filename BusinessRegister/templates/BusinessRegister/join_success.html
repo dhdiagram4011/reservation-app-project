@@ -1,31 +1,22 @@
 <div>
 <strong>가입이 완료되었습니다.</strong>
 <br/>
-business_members = BusinessJoin.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
 {% block content %}{% csrf_token %}
 <ul>
 {% for business_member in  business_members %}<br/>
 
-사업자 아이디 : {% business_member.business_id %}<br/>
-점포번호 : {% business_member.MG_number %}<br/>
-점포명 : {% business_member.Store_name %}<br/>
-점포 연락처 :{% business_member.Store_phone %}<br/>
-점포 주소 : {% business_member.Store_address_01 %}<br/>
-점포 상세주소 : {% business_member.Store_address_02 %}<br/>
-대표자명 : {% business_member.Representative %}<br/>
-점포번호 : {% business_member.store_number %}<br/>
-사업자등록번호 : {% business_member.bln %}<br/>
-스탬프디자인 : {% business_member.stamp_design %}<br/>
+사업자 아이디 : {{ business_member.business_id }}<br/>
+점포번호 : {{ business_member.MG_number }}<br/>
+점포명 : {{ business_member.Store_name }}<br/>
+점포 연락처 :{{ business_member.Store_phone }}<br/>
+점포 주소 : {{ business_member.Store_address_01 }}<br/>
+점포 상세주소 : {{ business_member.Store_address_02 }}<br/>
+대표자명 : {{ business_member.Representative }}<br/>
+점포번호 : {{ business_member.store_number }}<br/>
+사업자등록번호 : {{ business_member.bln }}<br/>
+스탬프디자인 : {{ business_member.stamp_design }}<br/>
 {% endfor %}
 {% endblock %}
 </ul>
 
-
 </div>
-
-"""
-회원가입 테이블
-business_id, MG_number, Store_name ,Store_phone
-Store_address_01, Store_address_02, Representative , store_number
-bln  , stamp_design
-"""
