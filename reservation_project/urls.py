@@ -37,7 +37,8 @@ urlpatterns = [
     path('data_save/', include('data_save.urls')), 
     path('', include('reservation_api.urls')), 
     path('push/', include('pushEngine.urls')), 
-    path('businessRegister/', include('BusinessRegister.urls')), 
+    path('businessRegister/', include('BusinessRegister.urls')),
+    path('cafe_manager/', include('cafe_manager.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #administrator site page title

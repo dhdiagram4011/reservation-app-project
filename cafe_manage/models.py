@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+#cafe_manager
+"""
+개인 점포별 관리 페이지
+dhdiagram.net/${business_id} 형식으로 생성
+"""
