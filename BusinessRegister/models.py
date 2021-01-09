@@ -1,13 +1,6 @@
 from django.db import models
 
 
-# class flightNumber(models.Model):
-#     number = models.CharField(max_length=10)
-
-#     def __str__(self):
-#         return self.number
-
-
 class BusinessJoin(models.Model):
     business_id = models.CharField(max_length=10) #사업자 아이디
     MG_number = models.CharField(max_length=3)  #점포 번호 (관리자 번호)
@@ -19,8 +12,5 @@ class BusinessJoin(models.Model):
     store_number = models.CharField(max_length=5) #점포번호
     bln = models.CharField(max_length=20) #사업자 등록번호
     stamp_design = models.ImageField(upload_to="") #적립 스탬프 이미지
-    created_date = models.DateTimeField(auto_now_add=True)
-    published_date = models.DateTimeField(null=True, blank=True)
-
-
-
+    created_date = models.DateTimeField(auto_now_add=True) # 가입일 
+    published_date = models.DateTimeField(null=True, blank=True) #데이터 생성일

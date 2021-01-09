@@ -48,7 +48,7 @@ def join(request):
 
 #점포 관리자 회원가입 성공
 def join_success(request):
-    business_member = BusinessJoin.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
+    business_members = BusinessJoin.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     return render(request, 'BusinessRegister/join_success.html', {'business_member':business_member})
     success_message = render_to_string('BusinessRegister/join_success.html', {'business_member':business_member})
 
