@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'reservation_api',
     'pushEngine',
+    'cafe_manager',
 ]
 
 

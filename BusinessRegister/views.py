@@ -40,7 +40,6 @@ def join(request):
             store_number = request.POST["store_number"]
             bln = request.POST["bln"]
             stamp_design = request.POST["stamp_design"]
-            post.set_password(password)
             post.save()
         return redirect('BusinessRegister:join_success')
 
