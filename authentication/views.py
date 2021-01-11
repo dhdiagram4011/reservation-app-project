@@ -59,7 +59,7 @@ def registration(request):
             password = request.POST["password"]
             #password = request.POST.get('password','-')
             post.set_password(password)
-            post.save()
+            post.save() ##폼 입력 후 DB에 저장
             send_email(request)
         return redirect('authentication:registrationSuccess')
 

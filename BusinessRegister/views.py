@@ -11,7 +11,7 @@ def join(request):
         form = joinForm(request.GET)
         return render(request, 'BusinessRegister/join.html', {'form':form})
     elif request.method == 'POST':
-        form = joinListForm(request.POST)
+        form = joinForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             business_id = request.POST["business_id"]
