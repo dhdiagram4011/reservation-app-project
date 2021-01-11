@@ -7,9 +7,9 @@ from twilio.rest import Client
 
 
 def join(request):
-    if request.method == "GET":
+    if request.method == 'GET':
         form = joinForm(request.GET)
-        return render(request, 'BusinessRegister/join.html', {'form':form}) 
+        return render(request, 'BusinessRegister/join.html', {'form':form})
     elif request.method == 'POST':
         form = joinListForm(request.POST)
         if form.is_valid():
@@ -23,10 +23,9 @@ def join(request):
             Representative = request.POST["Representative"]
             store_number = request.POST["store_number"]
             bln = request.POST["bln"]
-            stamp_design = request.POST["stamp_design"]
+            ##stamp_design = request.POST["stamp_design"]
             post.save()
-        return redirect('BusinessRegister:join_success')
-
+        return redirect('BusinessRegister:join_success')   
 
 
 #점포 관리자 회원가입 성공
@@ -34,6 +33,7 @@ def join_success(request):
     business_members = BusinessJoin.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     return render(request, 'BusinessRegister/join_success.html', {'business_members':business_members})
     success_message = render_to_string('BusinessRegister/join_success.html', {'business_members':business_members})
+    print(success_message)
 
     def send_sms(request):
         account_sid = os.environ['TWILIO_ACCOUNT_SID']

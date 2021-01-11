@@ -55,19 +55,13 @@ def registration(request):
             address = request.POST["address"]
             email = request.POST["email"]
             detailAddress = request.POST["detailAddress"]
-            phoneNumber = request.POST["phoneNumber"]            
+            phoneNumber = request.POST["phoneNumber"]
             password = request.POST["password"]
             #password = request.POST.get('password','-')
             post.set_password(password)
             post.save()
             send_email(request)
         return redirect('authentication:registrationSuccess')
-
-# def clean_username(self):
-#     username = self.cleaned_data['username']
-#     if MyUser.objects.filter(username=username).exists():
-#         raise forms.ValidationError(u'id "%s" 가 이미 존재합니다, 다른 아이디를 이용해 주세요' % username)
-
 
 
 def registrationSuccess(request):

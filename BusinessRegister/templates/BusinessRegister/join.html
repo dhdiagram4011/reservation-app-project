@@ -1,4 +1,56 @@
 {% block content %}
+<form method="POST" action="{% url 'BusinessRegister:join' %}">{% csrf_token %}
+<head>
+<style>
+body {    
+background: url("/Users/dohyoungkim/Downloads/Reservation-search-app/Reservation-app/ReservationProject/static/cloud.jpg")
+}
+li {
+    list-style:none;
+}
+</style>
+</head>
+</head>
+<div>
+<p style=font-size:13px;>
+<br/>
+<br/>
+<div style="width:100%; text-align:center; font-size:12px; margin-left:10px;">
+<strong style="text-decoration:underline;">점포 정보 회원가입 페이지 입니다. 아래의 정보를 모두 빠짐없이 정확하게 입력하여 주세요</strong>
+</div>
+</p>
+<div class="infobox" style="width:100%; text-align:center">
+<ul>
+<li>{{ form.business_id }}</li>
+<li style="margin-top:10px;">{{ form.MG_number }}</li>
+<li style="margin-top:10px;">{{ form.Store_name }}</li>
+<li style="margin-top:10px;">{{ form.Store_phone }}</li>
+<li style="margin-top:10px;">{{ form.Store_address_01 }}</li>
+<li style="margin-top:10px;">{{ form.Store_address_02 }}</li>
+<li style="margin-top:10px;">{{ form.Representative }}</li>
+<li style="margin-top:10px;">{{ form.store_number }}</li>
+<li style="margin-top:10px;">{{ form.bln }}</li>
+</ul>
+</div>
+<div style="width:100%; text-align:center; margin-left:20px;">
+<!--<input type="submit" value="가입하기">-->
+<button type="submit" value="register_member">가입하기</button>
+</form>
+<!--<input type="button" value="예약페이지" onClick="location.href='/reservation/revstart/'">-->
+</div>
+{% endblock %}
+<br/>
+<br/>
+<div>
+<br/>
+<br/>
+</div>
+
+
+
+
+
+{% comment %} {% block content %}
 
 <form method="POST" action="{% url 'BusinessRegister:join' %}">{% csrf_token %}
 <div class="box">
@@ -16,7 +68,7 @@
 </ul>
 </div>
 <div style="width:100%, text-align:center; margin-left:20px'">
-<button type="submit">가입하기</button>
+<button type="submit" value="add_register">가입하기</button>
 </form>
 </div>
-{% endblock %}
+{% endblock %} {% endcomment %}
