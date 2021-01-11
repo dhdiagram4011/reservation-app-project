@@ -4,6 +4,18 @@ from django.template.loader import render_to_string
 from .forms import *
 from django.utils import timezone
 from twilio.rest import Client
+import os
+
+# 점포 관리자 회원 가입 후 SMS 문자 발송
+def send_sms():
+        account_sid = os.environ['TWILIO_ACCOUNT_SID']
+        auth_token = os.environ['TWILIO_AUTH_TOKEN']
+        client = Client(account_sid, auth_token)
+        message = client.message.create(
+            body = '점포관리자 회원가입이 완료되었습니다',
+            from_ = '+16468460142',
+            to = '+8201021764011'
+        )
 
 
 def join(request):
@@ -25,6 +37,7 @@ def join(request):
             bln = request.POST["bln"]
             ##stamp_design = request.POST["stamp_design"]
             post.save()
+            send_sms(message)
         return redirect('BusinessRegister:join_success')   
 
 
@@ -33,17 +46,6 @@ def join_success(request):
     business_members = BusinessJoin.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     return render(request, 'BusinessRegister/join_success.html', {'business_members':business_members})
     success_message = render_to_string('BusinessRegister/join_success.html', {'business_members':business_members})
-    print(success_message)
-
-    def send_sms(request):
-        account_sid = os.environ['TWILIO_ACCOUNT_SID']
-        auth_token = os.environ['TWILIO_AUTH_TOKEN']
-        client = Client(account_sid, auth_token)
-        message = client.message.create(
-            body = success_message,
-            from_ = '+16468460142',
-            to = '+8201021764011'
-        )
 
 
 #점포 관리자 회원탈퇴
