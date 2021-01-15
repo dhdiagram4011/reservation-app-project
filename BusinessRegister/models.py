@@ -11,6 +11,5 @@ class BusinessJoin(models.Model):
     Representative = models.CharField(max_length=4) #대표자명
     store_number = models.CharField(max_length=5) #점포번호
     bln = models.CharField(max_length=20) #사업자 등록번호
-    ###stamp_design = models.ImageField(upload_to="") #적립 스탬프 이미지
     created_date = models.DateTimeField(auto_now_add=True) # 가입일 
     published_date = models.DateTimeField(null=True, blank=True) #데이터 생성일

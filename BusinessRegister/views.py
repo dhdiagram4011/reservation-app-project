@@ -35,7 +35,6 @@ def join(request):
             Representative = request.POST["Representative"]
             store_number = request.POST["store_number"]
             bln = request.POST["bln"]
-            ##stamp_design = request.POST["stamp_design"]
             post.save()
             send_sms(message)
         return redirect('BusinessRegister:join_success')   
